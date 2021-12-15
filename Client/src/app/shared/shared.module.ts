@@ -15,7 +15,6 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { MatRippleModule } from '@angular/material/core';
 import { OnlyText } from './directives/only-text.directive';
-import { PinInput } from './directives/pin-input.directive';
 import { DebounceClickDirective } from './directives/debounce.directive';
 import { MatProgressBarModule } from "@angular/material/progress-bar";
 
@@ -38,7 +37,6 @@ const materialModules = [
 
 const directives = [
     OnlyText,
-    PinInput,
     DebounceClickDirective
 ]
 
