@@ -1,0 +1,12 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net5.0</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\NultienShop.Common.Models\NultienShop.DataAccess.Domain.csproj" />
+    <ProjectReference Include="..\NultienShop.Common.ViewModels\NultienShop.Common.ViewModels.csproj" />
+  </ItemGroup>
+
+</Project>

@@ -1,0 +1,81 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.31729.503
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "1. DataAccess", "1. DataAccess", "{21BBD11C-31DC-463F-BC14-2EA9F85C3194}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "2. BusinessLogic", "2. BusinessLogic", "{367ABB82-8252-43AE-A279-950B281F0373}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "0. Common", "0. Common", "{45DBE47F-28E0-4E73-BB6F-C50DC4C2EB5F}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "NultienShop.IDataAccess", "NultienShop.IDataAccess\NultienShop.IDataAccess.csproj", "{D0539792-1C97-4E45-9216-FE0DDB0612C8}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "NultienShop.DataAccess", "NultienShop.DataAccess\NultienShop.DataAccess.csproj", "{D3EF489E-82D6-4503-96C9-D98BF4BC8407}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "NultienShop.IBusinessLogic", "NultienShop.BusinessLogicAbstract\NultienShop.IBusinessLogic.csproj", "{3F0B5888-E363-468D-8846-BE7F725ACF19}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "NultienShop.BusinessLogic", "NultienShop.BusinessLogic\NultienShop.BusinessLogic.csproj", "{E3658468-9970-4243-8F81-DB8B7A0CF62A}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "NultienShop.DataAccess.Domain", "NultienShop.Common.Models\NultienShop.DataAccess.Domain.csproj", "{2E81C221-223E-4403-8BAB-D9646F90B501}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "NultienShop.Common.ViewModels", "NultienShop.Common.ViewModels\NultienShop.Common.ViewModels.csproj", "{3E2F04AD-DB4D-4A5F-9427-CAA2B40AC83E}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "6. NultienShopConsoleApp", "NultienShopConsoleApp\6. NultienShopConsoleApp.csproj", "{0DC356B8-7057-4C5F-A6F9-41ADCF8DCA20}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "4. NultienShopREST", "NultienShopREST\4. NultienShopREST.csproj", "{D0C2B94D-19D6-4875-A71A-CDA16C9EEEBB}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{D0539792-1C97-4E45-9216-FE0DDB0612C8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D0539792-1C97-4E45-9216-FE0DDB0612C8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D0539792-1C97-4E45-9216-FE0DDB0612C8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D0539792-1C97-4E45-9216-FE0DDB0612C8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D3EF489E-82D6-4503-96C9-D98BF4BC8407}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D3EF489E-82D6-4503-96C9-D98BF4BC8407}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D3EF489E-82D6-4503-96C9-D98BF4BC8407}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D3EF489E-82D6-4503-96C9-D98BF4BC8407}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3F0B5888-E363-468D-8846-BE7F725ACF19}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3F0B5888-E363-468D-8846-BE7F725ACF19}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3F0B5888-E363-468D-8846-BE7F725ACF19}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3F0B5888-E363-468D-8846-BE7F725ACF19}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E3658468-9970-4243-8F81-DB8B7A0CF62A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E3658468-9970-4243-8F81-DB8B7A0CF62A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E3658468-9970-4243-8F81-DB8B7A0CF62A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E3658468-9970-4243-8F81-DB8B7A0CF62A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2E81C221-223E-4403-8BAB-D9646F90B501}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2E81C221-223E-4403-8BAB-D9646F90B501}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2E81C221-223E-4403-8BAB-D9646F90B501}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2E81C221-223E-4403-8BAB-D9646F90B501}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3E2F04AD-DB4D-4A5F-9427-CAA2B40AC83E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3E2F04AD-DB4D-4A5F-9427-CAA2B40AC83E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3E2F04AD-DB4D-4A5F-9427-CAA2B40AC83E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3E2F04AD-DB4D-4A5F-9427-CAA2B40AC83E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0DC356B8-7057-4C5F-A6F9-41ADCF8DCA20}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0DC356B8-7057-4C5F-A6F9-41ADCF8DCA20}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0DC356B8-7057-4C5F-A6F9-41ADCF8DCA20}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0DC356B8-7057-4C5F-A6F9-41ADCF8DCA20}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D0C2B94D-19D6-4875-A71A-CDA16C9EEEBB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D0C2B94D-19D6-4875-A71A-CDA16C9EEEBB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D0C2B94D-19D6-4875-A71A-CDA16C9EEEBB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D0C2B94D-19D6-4875-A71A-CDA16C9EEEBB}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{D0539792-1C97-4E45-9216-FE0DDB0612C8} = {21BBD11C-31DC-463F-BC14-2EA9F85C3194}
+		{D3EF489E-82D6-4503-96C9-D98BF4BC8407} = {21BBD11C-31DC-463F-BC14-2EA9F85C3194}
+		{3F0B5888-E363-468D-8846-BE7F725ACF19} = {367ABB82-8252-43AE-A279-950B281F0373}
+		{E3658468-9970-4243-8F81-DB8B7A0CF62A} = {367ABB82-8252-43AE-A279-950B281F0373}
+		{2E81C221-223E-4403-8BAB-D9646F90B501} = {21BBD11C-31DC-463F-BC14-2EA9F85C3194}
+		{3E2F04AD-DB4D-4A5F-9427-CAA2B40AC83E} = {45DBE47F-28E0-4E73-BB6F-C50DC4C2EB5F}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {C2147645-F70E-44D7-920A-FFF116B6B22E}
+	EndGlobalSection
+EndGlobal
