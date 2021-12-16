@@ -11,23 +11,25 @@ namespace NultienShopREST.Controllers
         private readonly ILogger<ArticleController> _logger;
         private readonly IArticleService _articleService;
 
-        public ArticleController(ILogger<ArticleController> logger) : base(logger)
+        public ArticleController(ILogger<ArticleController> logger, IArticleService articleService) : base(logger)
         {
             _logger = logger;
+            _articleService = articleService;
         }
 
         [HttpGet]
-        public IActionResult PingServer()
+        public async Task<IActionResult> GetArticles(int page = 0, int pageSize = 10)
         {
-            _logger.LogInformation("Server pinged");
-            return Ok();
+            return await TryReturnOk(() => _articleService.GetArticles(page, pageSize));
         }
 
         [HttpPost]
-        public async Task<IActionResult> GetOrder([FromBody] ArticleOrderVM articleOrder)
+        public async Task<IActionResult> OrderArticle([FromBody] ArticleOrderVM articleOrder)
         {
             return await TryReturnOk(() =>
                 _articleService.OrderArticle(articleOrder.ArticleId, articleOrder.Quantity, articleOrder.CustomerId, articleOrder.MaxPrice));
         }
+
+
     }
 }

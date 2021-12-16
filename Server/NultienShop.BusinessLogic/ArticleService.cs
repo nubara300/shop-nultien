@@ -1,5 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;
+using NultienShop.BusinessLogic.Mappers;
 using NultienShop.Common.ViewModels;
 using NultienShop.DataAccess.Domain.Models;
 using NultienShop.IBusinessLogic;
@@ -10,7 +11,7 @@ using System.Threading.Tasks;
 
 namespace NultienShop.BusinessLogic
 {
-    internal class ArticleService : IArticleService
+    public class ArticleService : IArticleService
     {
         private ILogger<ArticleService> _logger;
         private IBaseRepository _baseRepository;
@@ -50,10 +51,9 @@ namespace NultienShop.BusinessLogic
             return response;
         }
 
-        public async Task<ArticleVM> GetArticles(int page, int size)
+        public async Task<List<ArticleVM>> GetArticles(int page, int size)
         {
-            //return await _baseRepository.GetListByFilter<Article>(x => x.IsDeleted != true);
-            return new();
+            return (await _baseRepository.GetListByFilter<Article>(x => x.IsDeleted != true)).AdaptToViewModel();
         }
 
         public async Task<bool> IsArticleInInventory(int articleId, int maxPrice)
@@ -61,9 +61,5 @@ namespace NultienShop.BusinessLogic
             return await _inventoryService.IsArticleInAnyInventory(articleId, maxPrice);
         }
 
-        Task<CustomerVM> IArticleService.GetArticles(int page, int size)
-        {
-            throw new NotImplementedException();
-        }
     }
 }

@@ -5,6 +5,10 @@ namespace NultienShop.DataAccess.Domain.Models
 {
     public class Order : BaseEntity
     {
+        public Order()
+        {
+        }
+
         public Order(int quantity, int customerId, int articleId, int articlePrice)
         {
             Quantity = quantity;

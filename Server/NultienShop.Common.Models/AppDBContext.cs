@@ -9,10 +9,10 @@ namespace NultienShop.DataAccess.Domain
     {
         private readonly IConfiguration _configuration;
 
-        public virtual DbSet<Article> Articles { get; set; }
+        public virtual DbSet<Article> Article { get; set; }
         public virtual DbSet<ArticleOrder> ArticleOrder { get; set; }
         public virtual DbSet<Customer> Customer { get; set; }
-        public virtual DbSet<Inventory> Inventories { get; set; }
+        public virtual DbSet<Inventory> Inventory { get; set; }
         public virtual DbSet<InventoryArticle> InventoryArticle { get; set; }
         public virtual DbSet<Order> Order { get; set; }
 
@@ -20,9 +20,6 @@ namespace NultienShop.DataAccess.Domain
         {
             _configuration = configuration;
         }
-
-        public AppDBContext()
-        { }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {

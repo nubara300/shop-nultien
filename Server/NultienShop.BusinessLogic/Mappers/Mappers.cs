@@ -1,5 +1,6 @@
 ﻿using NultienShop.Common.ViewModels;
 using NultienShop.DataAccess.Domain.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -26,6 +27,35 @@ namespace NultienShop.BusinessLogic.Mappers
                 CustomerName = customerVM.CustomerName,
             };
         }
+
+
+        public static List<ArticleVM> AdaptToViewModel(this List<Article> customerVM)
+        {
+            return customerVM == null ? new List<ArticleVM>() : customerVM.Select(x => x.AdaptToViewModel()).ToList();
+        }
+
+        public static ArticleVM AdaptToViewModel(this Article article)
+        {
+            return article == null ? new ArticleVM() : new ArticleVM
+            {
+                ArticleId = article.ArticleId,
+                ArticleName = article.ArticleName,
+                ArticlePrice = article.ArticlePrice,
+                DateCreated = article.DateCreated
+            };
+        }
+
+        public static Article AdaptToModel(this ArticleVM article)
+        {
+            return article == null ? new() : new()
+            {
+                ArticleId = SetId(article.ArticleId),
+                ArticleName = article.ArticleName,
+                ArticlePrice = article.ArticlePrice,
+                DateCreated = article.ArticleId == 0 ? DateTime.Now : article.DateCreated
+            };
+        }
+
 
         public static int SetId(int? id)
         {

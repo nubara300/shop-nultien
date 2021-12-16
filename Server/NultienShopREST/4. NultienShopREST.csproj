@@ -20,6 +20,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\NultienShop.BusinessLogicAbstract\NultienShop.IBusinessLogic.csproj" />
+    <ProjectReference Include="..\NultienShop.BusinessLogic\NultienShop.BusinessLogic.csproj" />
     <ProjectReference Include="..\NultienShop.DataAccess\NultienShop.DataAccess.csproj" />
   </ItemGroup>
 

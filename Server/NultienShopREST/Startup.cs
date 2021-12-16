@@ -31,7 +31,7 @@ namespace NultienShopREST
 
             services.AddSwaggerGen(c =>
             {
-                c.SwaggerDoc("v1", new OpenApiInfo { Title = "CoreTemplate", Version = "v1" });
+                c.SwaggerDoc("v1", new OpenApiInfo { Title = "NultienShopApp", Version = "v1" });
             });
         }
 
@@ -55,7 +55,7 @@ namespace NultienShopREST
             app.UseRouting();
 
             app.UseSwagger();
-            app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "CoreTemplate v1"));
+            app.UseSwaggerUI(c => c.SwaggerEndpoint("/swagger/v1/swagger.json", "NultienShopApp v1"));
 
             app.UseEndpoints(endpoints =>
             {

@@ -5,7 +5,7 @@ namespace NultienShop.Common.ViewModels
 {
     public class ArticleVM
     {
-        public int ArticleId { get; set; }
+        public int? ArticleId { get; set; }
         public string ArticleName { get; set; }
         public int ArticlePrice { get; set; }
         public DateTime DateCreated { get; set; }

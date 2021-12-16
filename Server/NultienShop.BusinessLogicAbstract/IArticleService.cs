@@ -1,4 +1,5 @@
 ﻿using NultienShop.Common.ViewModels;
+using System.Collections.Generic;
 using System.Threading.Tasks;
 
 namespace NultienShop.IBusinessLogic
@@ -9,6 +10,6 @@ namespace NultienShop.IBusinessLogic
 
         Task<bool> IsArticleInInventory(int articleId, int maxPrice);
 
-        Task<CustomerVM> GetArticles(int page, int size);
+        Task<List<ArticleVM>> GetArticles(int page, int size);
     }
 }

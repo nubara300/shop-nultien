@@ -3,7 +3,11 @@ using Microsoft.AspNetCore.ResponseCompression;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using NultienShop.BusinessLogic;
+using NultienShop.DataAccess;
 using NultienShop.DataAccess.Domain;
+using NultienShop.IBusinessLogic;
+using NultienShop.IDataAccess;
 using System.IO.Compression;
 
 namespace NultienShopREST
@@ -20,10 +24,6 @@ namespace NultienShopREST
                 {
                     options.UseSqlServer(configuration.GetConnectionString("DefaultConnection"));
                 }
-                else
-                {
-                    options.UseInMemoryDatabase("NultienShopDB");
-                }
             });
 
             //add db context and set other database settings
@@ -32,9 +32,14 @@ namespace NultienShopREST
 
         public static void MapInterfaceImplementation(this IServiceCollection services)
         {
-            // add BL classes here
-
             // add DAL classes here
+            services.AddTransient<IBaseRepository,BaseRepository>();
+            services.AddTransient<IInventoryRepository,InventoryRepository>();
+
+            // add BL classes here
+            services.AddTransient<IArticleService, ArticleService>();
+            services.AddTransient<ICustomerService, CustomerService>();
+            services.AddTransient<IInventoryService, InventoryService>();
 
             // add other services here
             services.AddHttpClient();
