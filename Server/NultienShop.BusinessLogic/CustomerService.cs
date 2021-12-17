@@ -13,24 +13,25 @@ namespace NultienShop.BusinessLogic
     {
         private ILogger<CustomerService> _logger;
         private IBaseRepository _baseRepository;
-        private IInventoryRepository _inventoryRepository;
 
-        public CustomerService(ILogger<CustomerService> logger, IBaseRepository baseRepository)
+        public CustomerService(ILogger<CustomerService> logger, IBaseRepository baseRepository, IInventoryRepository inventoryRepository)
         {
             _logger = logger;
             _baseRepository = baseRepository;
         }
 
-        public async Task<List<CustomerVM>> GetCustomers(int page, int size)
+        public async Task<PaginationResponse<CustomerVM>> GetCustomers(int page, int size)
         {
-            return (await _baseRepository.GetListByFilter<Customer>(x => x.IsDeleted != true)).AdaptToViewModel();
+            var list = (await _baseRepository.GetListByFilter<Customer>(x => x.IsDeleted != true)).AdaptToViewModel();
+            int total = await _baseRepository.Count<Customer>(x=>true);
+            return new(list, total);
         }
 
         public async Task<ValidationResponse> UpdateCustomer(CustomerVM customerVM)
         {
             _baseRepository.AddOrUpdateContext(customerVM.AdaptToModel());
             await _baseRepository.SaveContextAsync();
-            return new() { IsSuccess = true, Message = "Customer added" };
+            return new() { IsSuccess = true, Message = "Customer updated" };
         }
     }
 }

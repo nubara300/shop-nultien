@@ -24,6 +24,7 @@ namespace NultienShopREST.Controllers
         }
 
         [HttpPost]
+        [Route("orderArticle")]
         public async Task<IActionResult> OrderArticle([FromBody] ArticleOrderVM articleOrder)
         {
             return await TryReturnOk(() =>

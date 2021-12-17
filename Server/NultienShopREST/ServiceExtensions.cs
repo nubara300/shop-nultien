@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.ResponseCompression;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Logging;
 using NultienShop.BusinessLogic;
 using NultienShop.DataAccess;
 using NultienShop.DataAccess.Domain;
@@ -17,13 +18,20 @@ namespace NultienShopREST
         public static void ConfigureContext(this IServiceCollection services, IConfiguration configuration)
         {
             _ = bool.TryParse(configuration.GetSection("useDatabase").Value, out bool useDatabase);
-
+            _ = bool.TryParse(configuration.GetSection("useEFCoreLogging").Value, out bool useLogging);
             services.AddDbContext<AppDBContext>(options =>
             {
-                if (useDatabase)
+                if (useLogging)
                 {
-                    options.UseSqlServer(configuration.GetConnectionString("DefaultConnection"));
+                    options.UseLoggerFactory(LoggerFactory.Create(builder => { builder.AddConsole(); }));
+                    options.EnableSensitiveDataLogging();
                 }
+                options.UseSqlServer(configuration.GetConnectionString("DefaultConnection"), o =>
+                {
+                    o.EnableRetryOnFailure(2);
+                    o.CommandTimeout(3);
+                });
+
             });
 
             //add db context and set other database settings
@@ -33,13 +41,16 @@ namespace NultienShopREST
         public static void MapInterfaceImplementation(this IServiceCollection services)
         {
             // add DAL classes here
-            services.AddTransient<IBaseRepository,BaseRepository>();
-            services.AddTransient<IInventoryRepository,InventoryRepository>();
+            services.AddTransient<IBaseRepository, BaseRepository>();
+            services.AddTransient<IInventoryRepository, InventoryRepository>();
+            services.AddTransient<IArticleRepository, ArticleRepository>();
+            services.AddTransient<IOrderRepository, OrderRepository>();
 
             // add BL classes here
             services.AddTransient<IArticleService, ArticleService>();
             services.AddTransient<ICustomerService, CustomerService>();
             services.AddTransient<IInventoryService, InventoryService>();
+            services.AddTransient<IOrderService, OrderService>();
 
             // add other services here
             services.AddHttpClient();

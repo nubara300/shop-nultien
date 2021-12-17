@@ -20,14 +20,7 @@ namespace NultienShop.DataAccess
         }
 
         public IExecutionStrategy GetExecutionStrategy() => _context.Database.CreateExecutionStrategy();
-
-        public async Task<int> SaveContextWithTransaction()
-        {
-            var transaction = await _context.Database.BeginTransactionAsync();
-            int savedChanges = await SaveContextAsync();
-            await transaction.CommitAsync();
-            return savedChanges;
-        }
+        public async Task<IDbContextTransaction> GetTransaction() => await _context.Database.BeginTransactionAsync();
 
         public async Task<T> GetByFilter<T>(Expression<Func<T, bool>> filter) where T : class
         {
@@ -69,5 +62,16 @@ namespace NultienShop.DataAccess
         {
             return await _context.Set<T>().Where(filter).AsNoTracking().AnyAsync();
         }
+
+        public async Task<int> Count<T>(Expression<Func<T, bool>> filter) where T : class
+        {
+            return await _context.Set<T>().Where(filter).AsNoTracking().CountAsync();
+        }
+
+        //public async Task<int> Count<T>() where T : class
+        //{
+        //    return await _context.Set<T>().AsNoTracking().CountAsync();
+        //}
+
     }
 }

@@ -12,7 +12,7 @@ namespace NultienShop.IDataAccess
 
         Task<List<T>> GetListByFilter<T>(Expression<Func<T, bool>> filter) where T : class;
 
-        Task<int> SaveContextWithTransaction();
+        Task<IDbContextTransaction> GetTransaction();
 
         IExecutionStrategy GetExecutionStrategy();
 
@@ -23,5 +23,6 @@ namespace NultienShop.IDataAccess
         void AddOrUpdateContext<T>(List<T> entities) where T : class;
 
         Task<bool> Any<T>(Expression<Func<T, bool>> filter) where T : class;
+        Task<int> Count<T>(Expression<Func<T, bool>> filter) where T : class;
     }
 }

@@ -56,6 +56,16 @@ namespace NultienShop.BusinessLogic.Mappers
             };
         }
 
+        public static Inventory AdaptToModel(this InventoryVM inventoryVM)
+        {
+            return inventoryVM == null ? new() : new()
+            {
+                InventoryName = inventoryVM.InventoryName,
+                InventoryLocation = inventoryVM.InventoryLocation,
+                DateCreated = inventoryVM.InventoryId == 0 ? DateTime.Now : inventoryVM.DateCreated.Value,
+            };
+        }
+
 
         public static int SetId(int? id)
         {

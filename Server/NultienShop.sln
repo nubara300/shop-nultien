@@ -21,8 +21,6 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "NultienShop.DataAccess.Doma
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "NultienShop.Common.ViewModels", "NultienShop.Common.ViewModels\NultienShop.Common.ViewModels.csproj", "{3E2F04AD-DB4D-4A5F-9427-CAA2B40AC83E}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "6. NultienShopConsoleApp", "NultienShopConsoleApp\6. NultienShopConsoleApp.csproj", "{0DC356B8-7057-4C5F-A6F9-41ADCF8DCA20}"
-EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "4. NultienShopREST", "NultienShopREST\4. NultienShopREST.csproj", "{D0C2B94D-19D6-4875-A71A-CDA16C9EEEBB}"
 EndProject
 Global
@@ -55,10 +53,6 @@ Global
 		{3E2F04AD-DB4D-4A5F-9427-CAA2B40AC83E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{3E2F04AD-DB4D-4A5F-9427-CAA2B40AC83E}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{3E2F04AD-DB4D-4A5F-9427-CAA2B40AC83E}.Release|Any CPU.Build.0 = Release|Any CPU
-		{0DC356B8-7057-4C5F-A6F9-41ADCF8DCA20}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{0DC356B8-7057-4C5F-A6F9-41ADCF8DCA20}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{0DC356B8-7057-4C5F-A6F9-41ADCF8DCA20}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{0DC356B8-7057-4C5F-A6F9-41ADCF8DCA20}.Release|Any CPU.Build.0 = Release|Any CPU
 		{D0C2B94D-19D6-4875-A71A-CDA16C9EEEBB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{D0C2B94D-19D6-4875-A71A-CDA16C9EEEBB}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D0C2B94D-19D6-4875-A71A-CDA16C9EEEBB}.Release|Any CPU.ActiveCfg = Release|Any CPU

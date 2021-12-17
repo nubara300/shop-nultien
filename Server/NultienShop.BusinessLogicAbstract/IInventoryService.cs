@@ -9,9 +9,7 @@ namespace NultienShop.IBusinessLogic
     {
         Task<List<InventoryArticle>> GetListOfInventoriesAndSetQuantity(int articleId, int quantity, int maxPrice);
 
-        Task<bool> IsArticleInAnyInventory(int articleId, int maxPrice);
-
-        Task<List<InventoryVM>> GetInventories(int page, int size);
+        Task<PaginationResponse<InventoryVM>> GetInventories(int page, int size);
 
         Task<ValidationResponse> UpdateInventory(InventoryVM inventory);
     }

@@ -9,7 +9,7 @@ namespace NultienShop.DataAccess.Domain.ModelConfiguration
         public void Configure(EntityTypeBuilder<ArticleOrder> entity)
         {
             entity.HasOne(x => x.Article).WithMany().HasForeignKey(x => x.ArticleId).OnDelete(DeleteBehavior.Restrict);
-            entity.HasOne(x => x.Order).WithMany().HasForeignKey(x => x.OrderId).OnDelete(DeleteBehavior.Restrict);
+            entity.HasOne(x => x.Order).WithMany(x=>x.ArticleOrders).HasForeignKey(x => x.OrderId).OnDelete(DeleteBehavior.Restrict);
         }
     }
 
@@ -18,7 +18,7 @@ namespace NultienShop.DataAccess.Domain.ModelConfiguration
         public void Configure(EntityTypeBuilder<InventoryArticle> entity)
         {
             entity.HasOne(x => x.Article).WithMany().HasForeignKey(x => x.ArticleId).OnDelete(DeleteBehavior.Restrict);
-            entity.HasOne(x => x.Inventory).WithMany().HasForeignKey(x => x.InventoryId).OnDelete(DeleteBehavior.Restrict);
+            entity.HasOne(x => x.Inventory).WithMany(x=>x.InventoryArticles).HasForeignKey(x => x.InventoryId).OnDelete(DeleteBehavior.Restrict);
         }
     }
 }

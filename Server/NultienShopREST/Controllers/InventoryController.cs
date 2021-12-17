@@ -18,7 +18,7 @@ namespace NultienShopREST.Controllers
         }
 
         [HttpGet]
-        public async Task<IActionResult> GetInventory(int page, int pageSize)
+        public async Task<IActionResult> GetInventory(int page = 0, int pageSize = 10)
         {
             return await TryReturnOk(() => _inventoryService.GetInventories(page, pageSize));
         }
@@ -26,6 +26,7 @@ namespace NultienShopREST.Controllers
         [HttpPost]
         public async Task<IActionResult> UpdateInventory([FromBody] InventoryVM inventory)
         {
+            _logger.LogInformation("Update inventory item");
             return await TryReturnOk(() => _inventoryService.UpdateInventory(inventory));
         }
     }

@@ -65,7 +65,8 @@ namespace NultienShop.DataAccess.Domain.Migrations
                     OrderId = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     Quantity = table.Column<int>(type: "int", nullable: false),
-                    TotalCost = table.Column<int>(type: "int", nullable: false),
+                    TotalCost = table.Column<int>(type: "int", nullable: true),
+                    Completed = table.Column<bool>(type: "bit", nullable: true),
                     CustomerId = table.Column<int>(type: "int", nullable: false),
                     DateCreated = table.Column<DateTime>(type: "datetime2", nullable: false),
                     DateModified = table.Column<DateTime>(type: "datetime2", nullable: true),
@@ -116,8 +117,7 @@ namespace NultienShop.DataAccess.Domain.Migrations
                     ArticleOrderId = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     ArticleId = table.Column<int>(type: "int", nullable: false),
-                    OrderId = table.Column<int>(type: "int", nullable: false),
-                    OrderId1 = table.Column<int>(type: "int", nullable: true)
+                    OrderId = table.Column<int>(type: "int", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -134,12 +134,6 @@ namespace NultienShop.DataAccess.Domain.Migrations
                         principalTable: "Order",
                         principalColumn: "OrderId",
                         onDelete: ReferentialAction.Restrict);
-                    table.ForeignKey(
-                        name: "FK_ArticleOrder_Order_OrderId1",
-                        column: x => x.OrderId1,
-                        principalTable: "Order",
-                        principalColumn: "OrderId",
-                        onDelete: ReferentialAction.Restrict);
                 });
 
             migrationBuilder.InsertData(
@@ -147,16 +141,67 @@ namespace NultienShop.DataAccess.Domain.Migrations
                 columns: new[] { "ArticleId", "ArticleName", "ArticlePrice", "DateCreated", "DateModified", "IsDeleted" },
                 values: new object[,]
                 {
-                    { 1, "Article No.1", 271, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), null, null },
-                    { 2, "Article No.2", 319, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), null, null },
-                    { 3, "Article No.3", 322, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), null, null },
-                    { 4, "Article No.4", 490, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), null, null },
-                    { 5, "Article No.5", 429, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), null, null },
-                    { 6, "Article No.6", 184, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), null, null },
-                    { 7, "Article No.7", 983, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), null, null },
-                    { 8, "Article No.8", 154, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), null, null },
-                    { 9, "Article No.9", 131, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), null, null },
-                    { 10, "Article No.10", 590, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), null, null }
+                    { 1, "Article No.1", 258, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), null, null },
+                    { 2, "Article No.2", 777, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), null, null },
+                    { 3, "Article No.3", 784, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), null, null },
+                    { 4, "Article No.4", 928, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), null, null },
+                    { 5, "Article No.5", 714, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), null, null },
+                    { 6, "Article No.6", 988, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), null, null },
+                    { 7, "Article No.7", 525, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), null, null },
+                    { 8, "Article No.8", 666, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), null, null },
+                    { 9, "Article No.9", 792, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), null, null },
+                    { 10, "Article No.10", 839, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), null, null }
+                });
+
+            migrationBuilder.InsertData(
+                table: "Customer",
+                columns: new[] { "CustomerId", "CustomerEmail", "CustomerName", "DateCreated", "DateModified", "IsDeleted" },
+                values: new object[,]
+                {
+                    { 10, null, "Customer 10", new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), null, null },
+                    { 9, null, "Customer 9", new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), null, null },
+                    { 8, null, "Customer 8", new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), null, null },
+                    { 7, null, "Customer 7", new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), null, null },
+                    { 6, null, "Customer 6", new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), null, null },
+                    { 5, null, "Customer 5", new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), null, null },
+                    { 4, null, "Customer 4", new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), null, null },
+                    { 3, null, "Customer 3", new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), null, null },
+                    { 2, null, "Customer 2", new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), null, null },
+                    { 1, null, "Customer 1", new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), null, null }
+                });
+
+            migrationBuilder.InsertData(
+                table: "Inventory",
+                columns: new[] { "InventoryId", "DateCreated", "DateModified", "InventoryLocation", "InventoryName", "IsDeleted" },
+                values: new object[,]
+                {
+                    { 1, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), null, "Inventory location id-1", "Inventory No.1", null },
+                    { 2, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), null, "Inventory location id-2", "Inventory No.2", null },
+                    { 3, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), null, "Inventory location id-3", "Inventory No.3", null },
+                    { 4, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), null, "Inventory location id-4", "Inventory No.4", null },
+                    { 5, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), null, "Inventory location id-5", "Inventory No.5", null },
+                    { 6, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), null, "Inventory location id-6", "Inventory No.6", null },
+                    { 7, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), null, "Inventory location id-7", "Inventory No.7", null },
+                    { 8, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), null, "Inventory location id-8", "Inventory No.8", null },
+                    { 9, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), null, "Inventory location id-9", "Inventory No.9", null },
+                    { 10, new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified), null, "Inventory location id-10", "Inventory No.10", null }
+                });
+
+            migrationBuilder.InsertData(
+                table: "InventoryArticle",
+                columns: new[] { "InventoryArticleId", "ArticleId", "ArticleQuantity", "InventoryId" },
+                values: new object[,]
+                {
+                    { 1, 1, 292, 1 },
+                    { 2, 2, 239, 2 },
+                    { 3, 3, 235, 3 },
+                    { 4, 4, 209, 4 },
+                    { 5, 5, 439, 5 },
+                    { 6, 6, 303, 6 },
+                    { 7, 7, 129, 7 },
+                    { 8, 8, 87, 8 },
+                    { 9, 9, 12, 9 },
+                    { 10, 10, 37, 10 }
                 });
 
             migrationBuilder.CreateIndex(
@@ -168,11 +213,6 @@ namespace NultienShop.DataAccess.Domain.Migrations
                 name: "IX_ArticleOrder_OrderId",
                 table: "ArticleOrder",
                 column: "OrderId");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_ArticleOrder_OrderId1",
-                table: "ArticleOrder",
-                column: "OrderId1");
 
             migrationBuilder.CreateIndex(
                 name: "IX_InventoryArticle_ArticleId",

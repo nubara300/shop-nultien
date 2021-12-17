@@ -1,4 +1,5 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.Data.SqlClient;
+using Microsoft.EntityFrameworkCore;
 using NultienShop.DataAccess.Domain;
 using NultienShop.DataAccess.Domain.Models;
 using NultienShop.IDataAccess;
@@ -19,11 +20,26 @@ namespace NultienShop.DataAccess
 
         public async Task<List<InventoryArticle>> GetArticleInventoriesByQuantity(int articleId, int quantity, int maxPrice)
         {
-            var query = _context.InventoryArticle.Where(x => x.ArticleId == articleId && x.Article.ArticlePrice <= maxPrice);
-            var firstGreaterInventory = query.Where(x => x.ArticleQuantity >= quantity).FirstOrDefault();
+            var firstGreaterInventory = await _context.InventoryArticle.Where(x => x.ArticleId == articleId && x.ArticleQuantity >= quantity).FirstOrDefaultAsync();
+            if (firstGreaterInventory == null)
+            {
+                SqlParameter param1 = new("ArticleId", articleId);
+                SqlParameter param2 = new("ArticleQuantity", quantity);
+                return await _context.InventoryArticle
+                    .FromSqlRaw($"EXEC SelectArticleQuantity {0}, {1}", articleId, quantity)
+                    .ToListAsync();
+            }
 
-            return firstGreaterInventory != null ?
-            new List<InventoryArticle> { firstGreaterInventory } : await query.Where(x => x.ArticleQuantity <= quantity).ToListAsync();
+            return new List<InventoryArticle> { firstGreaterInventory };
+        }
+
+        public async Task<List<Inventory>> GetInventories(int page, int size)
+        {
+            return await _context.Inventory.AsNoTracking()
+                 .OrderByDescending(x => x.InventoryId)
+                 .Skip((page - 1) * size)
+                 .Take(size)
+                 .ToListAsync();
         }
     }
 }

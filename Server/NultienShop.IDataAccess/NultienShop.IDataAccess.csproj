@@ -6,6 +6,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\NultienShop.Common.Models\NultienShop.DataAccess.Domain.csproj" />
+    <ProjectReference Include="..\NultienShop.Common.ViewModels\NultienShop.Common.ViewModels.csproj" />
   </ItemGroup>
 
 </Project>
