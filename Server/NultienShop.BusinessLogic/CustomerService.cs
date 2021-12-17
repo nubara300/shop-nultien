@@ -4,7 +4,6 @@ using NultienShop.Common.ViewModels;
 using NultienShop.DataAccess.Domain.Models;
 using NultienShop.IBusinessLogic;
 using NultienShop.IDataAccess;
-using System.Collections.Generic;
 using System.Threading.Tasks;
 
 namespace NultienShop.BusinessLogic
@@ -23,7 +22,7 @@ namespace NultienShop.BusinessLogic
         public async Task<PaginationResponse<CustomerVM>> GetCustomers(int page, int size)
         {
             var list = (await _baseRepository.GetListByFilter<Customer>(x => x.IsDeleted != true)).AdaptToViewModel();
-            int total = await _baseRepository.Count<Customer>(x=>true);
+            int total = await _baseRepository.Count<Customer>(x => true);
             return new(list, total);
         }
 

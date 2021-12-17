@@ -1,7 +1,5 @@
 ﻿using Microsoft.Extensions.Logging;
-using NultienShop.BusinessLogic.Mappers;
 using NultienShop.Common.ViewModels;
-using NultienShop.DataAccess.Domain.Models;
 using NultienShop.IBusinessLogic;
 using NultienShop.IDataAccess;
 using System.Threading.Tasks;

@@ -1,5 +1,4 @@
-﻿using Microsoft.EntityFrameworkCore;
-using Microsoft.Extensions.Logging;
+﻿using Microsoft.Extensions.Logging;
 using NultienShop.BusinessLogic.Mappers;
 using NultienShop.Common.ViewModels;
 using NultienShop.DataAccess.Domain.Models;
@@ -17,7 +16,6 @@ namespace NultienShop.BusinessLogic
         private IBaseRepository _baseRepository;
         private IInventoryService _inventoryService;
         private IArticleRepository _articleRepository;
-
 
         public ArticleService(ILogger<ArticleService> logger, IBaseRepository baseRepository, IInventoryService inventoryService, IArticleRepository articleRepository)
         {
@@ -77,6 +75,5 @@ namespace NultienShop.BusinessLogic
         {
             return await _articleRepository.IsArticleValidAndInAnyInventory(articleId, maxPrice);
         }
-
     }
 }

@@ -24,6 +24,5 @@ namespace NultienShopREST.Controllers
             _logger.LogInformation("Order metrics are requested");
             return await TryReturnOk(() => _orderService.GetOrderMetrics(orderMetricsRequest));
         }
-
     }
 }

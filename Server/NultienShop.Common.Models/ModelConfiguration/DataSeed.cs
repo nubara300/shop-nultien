@@ -49,7 +49,7 @@ namespace NultienShop.DataAccess.Domain.ModelConfiguration
 
                 for (int i = 1; i <= dataSeedCount.Length; i++)
                     collectionToAdd.Add(new InventoryArticle { InventoryArticleId = i, ArticleId = i, InventoryId = i, ArticleQuantity = randomPrice.Next(0, 500) });
-               
+
                 entity.HasData(collectionToAdd);
             }
         }

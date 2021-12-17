@@ -23,6 +23,7 @@ namespace NultienShop.IDataAccess
         void AddOrUpdateContext<T>(List<T> entities) where T : class;
 
         Task<bool> Any<T>(Expression<Func<T, bool>> filter) where T : class;
+
         Task<int> Count<T>(Expression<Func<T, bool>> filter) where T : class;
     }
 }

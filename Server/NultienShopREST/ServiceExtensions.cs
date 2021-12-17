@@ -31,7 +31,6 @@ namespace NultienShopREST
                     o.EnableRetryOnFailure(2);
                     o.CommandTimeout(3);
                 });
-
             });
 
             //add db context and set other database settings

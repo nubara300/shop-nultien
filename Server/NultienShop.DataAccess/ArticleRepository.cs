@@ -1,9 +1,7 @@
-﻿using Microsoft.Data.SqlClient;
-using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.EntityFrameworkCore;
 using NultienShop.DataAccess.Domain;
 using NultienShop.DataAccess.Domain.Models;
 using NultienShop.IDataAccess;
-using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 

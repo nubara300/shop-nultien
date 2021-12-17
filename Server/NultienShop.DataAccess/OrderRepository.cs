@@ -19,11 +19,11 @@ namespace NultienShop.DataAccess
         public async Task<(int succsefull, int failed)> GetOrderMetrics(OrderMetricsRequest orderMetricsRequest)
         {
             var queery = _context.ArticleOrder.AsNoTracking().AsQueryable();
-            if (orderMetricsRequest.ArticleId>0)
+            if (orderMetricsRequest.ArticleId > 0)
             {
                 queery = queery.Where(x => x.ArticleId == orderMetricsRequest.ArticleId);
             }
-            if (orderMetricsRequest.CustomerId>0)
+            if (orderMetricsRequest.CustomerId > 0)
             {
                 queery = queery.Where(x => x.Order.CustomerId == orderMetricsRequest.CustomerId);
             }
@@ -33,9 +33,9 @@ namespace NultienShop.DataAccess
             }
             if (orderMetricsRequest.DateFrom.HasValue)
             {
-                queery = queery.Where(x => x.Order.DateCreated.CompareTo(orderMetricsRequest.DateFrom.Value)>=0);
+                queery = queery.Where(x => x.Order.DateCreated.CompareTo(orderMetricsRequest.DateFrom.Value) >= 0);
             }
-            var succsefull = await queery.Where(x => x.Order.Completed == true).Select(x=>x.Order).CountAsync();
+            var succsefull = await queery.Where(x => x.Order.Completed == true).Select(x => x.Order).CountAsync();
             var failed = await queery.Where(x => x.Order.Completed != true).Select(x => x.Order).CountAsync();
 
             return (succsefull, failed);

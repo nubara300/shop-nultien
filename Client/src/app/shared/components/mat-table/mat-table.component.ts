@@ -39,7 +39,7 @@ export class MatTableComponent implements OnInit {
   columnKeys: string[] = [];
 
   @Input()
-  set response(value: IPageableResponse<Article[]>) {
+  set data(value: IPageableResponse<Article[]>) {
     if (value) {
       this.currentPage = value.currentPage ?? 0;
       this.total = value.total ?? 0;

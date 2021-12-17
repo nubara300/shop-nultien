@@ -30,7 +30,5 @@ namespace NultienShopREST.Controllers
             return await TryReturnOk(() =>
                 _articleService.OrderArticle(articleOrder.ArticleId, articleOrder.Quantity, articleOrder.CustomerId, articleOrder.MaxPrice));
         }
-
-
     }
 }

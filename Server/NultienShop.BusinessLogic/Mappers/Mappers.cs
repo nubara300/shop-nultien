@@ -28,7 +28,6 @@ namespace NultienShop.BusinessLogic.Mappers
             };
         }
 
-
         public static List<ArticleVM> AdaptToViewModel(this List<Article> customerVM)
         {
             return customerVM == null ? new List<ArticleVM>() : customerVM.Select(x => x.AdaptToViewModel()).ToList();
@@ -65,7 +64,6 @@ namespace NultienShop.BusinessLogic.Mappers
                 DateCreated = inventoryVM.InventoryId == 0 ? DateTime.Now : inventoryVM.DateCreated.Value,
             };
         }
-
 
         public static int SetId(int? id)
         {

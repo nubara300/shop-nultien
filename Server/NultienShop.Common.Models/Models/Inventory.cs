@@ -9,6 +9,7 @@ namespace NultienShop.DataAccess.Domain.Models
         public int InventoryId { get; set; }
         public string InventoryName { get; set; }
         public string InventoryLocation { get; set; }
+
         [NotMapped]
         public ICollection<InventoryArticle> InventoryArticles { get; set; } = new Collection<InventoryArticle>();
     }
