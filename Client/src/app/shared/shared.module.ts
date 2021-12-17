@@ -17,6 +17,7 @@ import { MatRippleModule } from '@angular/material/core';
 import { OnlyText } from './directives/only-text.directive';
 import { DebounceClickDirective } from './directives/debounce.directive';
 import { MatProgressBarModule } from "@angular/material/progress-bar";
+import { MatTableComponent } from './components/mat-table/mat-table.component';
 
 const materialModules = [
     //material modules
@@ -41,7 +42,7 @@ const directives = [
 ]
 
 @NgModule({
-    declarations: [directives],
+    declarations: [directives, MatTableComponent],
     imports: [
         CommonModule,
         FlexLayoutModule,
