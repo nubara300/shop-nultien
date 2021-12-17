@@ -2,6 +2,13 @@
 
 namespace NultienShop.Common.ViewModels
 {
+    public class OrdersVM
+    {
+        public int ArticleId { get; set; }
+        public int TotalPrice { get; set; }
+        public bool? Successfull { get; set; }
+        public DateTime DateCreated { get; set; }
+    }
     public class OrderMetrics
     {
         public int SuccsefullOrders { get; set; }
@@ -15,4 +22,6 @@ namespace NultienShop.Common.ViewModels
         public DateTime? DateFrom { get; set; }
         public DateTime? DateTo { get; set; }
     }
+
+
 }

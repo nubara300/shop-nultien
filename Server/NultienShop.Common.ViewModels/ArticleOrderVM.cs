@@ -11,7 +11,7 @@ namespace NultienShop.Common.ViewModels
         public DateTime DateCreated { get; set; }
     }
 
-    public class ArticleOrderVM
+    public class ArticleOrderRequest
     {
         [Required]
         public int ArticleId { get; set; }
@@ -26,30 +26,4 @@ namespace NultienShop.Common.ViewModels
         public int CustomerId { get; set; }
     }
 
-    public class CustomerVM
-    {
-        public int? CustomerId { get; set; }
-        public string CustomerName { get; set; }
-        public string CustomerEmail { get; set; }
-    }
-
-    public class OrdersVM
-    {
-        public int ArticleId { get; set; }
-        public int TotalPrice { get; set; }
-        public bool? Successfull { get; set; }
-        public DateTime DateCreated { get; set; }
-    }
-
-    public class InventoryVM
-    {
-        public int InventoryId { get; set; }
-        public string InventoryName { get; set; }
-        public string InventoryLocation { get; set; }
-        public string ArticleName { get; set; }
-        public int ArticlePrice { get; set; }
-        public int ArticlQuantity { get; set; }
-        public int ArticleId { get; set; }
-        public DateTime? DateCreated { get; set; }
-    }
 }

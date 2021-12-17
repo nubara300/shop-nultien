@@ -20,6 +20,7 @@ namespace NultienShop.DataAccess
         }
 
         public IExecutionStrategy GetExecutionStrategy() => _context.Database.CreateExecutionStrategy();
+
         public async Task<IDbContextTransaction> GetTransaction() => await _context.Database.BeginTransactionAsync();
 
         public async Task<T> GetByFilter<T>(Expression<Func<T, bool>> filter) where T : class
@@ -72,6 +73,5 @@ namespace NultienShop.DataAccess
         //{
         //    return await _context.Set<T>().AsNoTracking().CountAsync();
         //}
-
     }
 }

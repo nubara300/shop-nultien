@@ -33,7 +33,8 @@ const materialModules = [
     MatIconModule,
     MatTooltipModule,
     MatRippleModule,
-    MatProgressBarModule
+    MatProgressBarModule,
+    MatTooltipModule
 ]
 
 const directives = [
@@ -56,7 +57,8 @@ const directives = [
         FormsModule,
         ReactiveFormsModule,
         materialModules,
-        directives
+        directives,
+        MatTableComponent
     ],
     providers: [],
 })

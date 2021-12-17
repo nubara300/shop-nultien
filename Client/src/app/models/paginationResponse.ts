@@ -2,7 +2,7 @@ export interface IPageableResponse<T> {
     total?: number;
     pageSize?: number;
     currentPage?: number;
-    entries: T[];
+    results: T[];
 }
 
 export interface IPageableRequest {

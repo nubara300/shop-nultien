@@ -1,31 +1,45 @@
-<table mat-table [dataSource]="tableData" class='width-100' >
-    <!-- Position Column -->
-    <ng-container *ngFor="let column of columns;" matColumnDef="{{column.key}}">
-        <th mat-header-cell *matHeaderCellDef> {{column.label}} </th>
-        <td mat-cell *matCellDef="let element"> {{element[column.key]}} </td>
-    </ng-container>
+<table mat-table [dataSource]="tableData" class="width-100">
+  <!-- Position Column -->
+  <ng-container *ngFor="let column of columns" matColumnDef="{{ column.key }}">
+    <th mat-header-cell *matHeaderCellDef>{{ column.label }}</th>
+    <td mat-cell *matCellDef="let element">{{ element[column.key] }}</td>
+  </ng-container>
 
-    <ng-container matColumnDef="actions">
+  <ng-container matColumnDef="actions">
+    <th mat-header-cell *matHeaderCellDef>Actions</th>
+    <td mat-cell *matCellDef="let element">
+      <ng-template
+        *ngTemplateOutlet="actionTpl; context:element"
+      ></ng-template>
+    </td>
+  </ng-container>
 
-    </ng-container>
-    <tr mat-header-row *matHeaderRowDef="columnKeys"></tr>
-    <tr mat-row *matRowDef="let row; columns: columnKeys;"></tr>
+  <tr mat-header-row *matHeaderRowDef="columnKeys"></tr>
+  <tr mat-row *matRowDef="let row; columns: columnKeys"></tr>
 
-    <tr class="mat-row" *matNoDataRow>
-        <td class="mat-cell" colspan="7">No data matching the filter</td>
-    </tr>
+  <tr class="mat-row" *matNoDataRow>
+    <td class="mat-cell" colspan="7">No data matching the filter</td>
+  </tr>
 </table>
-<div *ngIf="showLoader$|async">
-    <mat-progress-bar mode="indeterminate" color="warn" class="loader-progress"></mat-progress-bar>
+<div *ngIf="showLoader$ | async">
+  <mat-progress-bar
+    mode="indeterminate"
+    color="warn"
+    class="loader-progress"
+  ></mat-progress-bar>
 </div>
-<mat-paginator [length]="total" [pageSize]="10" [pageIndex]="currentPage" (page)="pageChange($event)">
+<mat-paginator
+  [length]="total"
+  [pageSize]="10"
+  [pageIndex]="currentPage"
+  (page)="pageChange($event)"
+>
 </mat-paginator>
 
-<ng-template #actionTpl let-patient="patient">
-    <ng-container *ngFor='let action of actions'>
-        <button mat-icon-button (click)='rowAction(action)'>
-            <mat-icon>arrow_right_alt</mat-icon>
-        </button>
-    </ng-container>
-
+<ng-template #actionTpl let-element="element">
+  <ng-container *ngFor="let action of actions">
+    <button mat-icon-button (click)="rowAction(action, element)" [matTooltip]="action.tooltip" class='{{action.btnClass}}'>
+      <mat-icon class='{{action.iconClass}}' appearance="outline">{{ action.icon }}</mat-icon>
+    </button>
+  </ng-container>
 </ng-template>
