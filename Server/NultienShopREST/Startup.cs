@@ -1,9 +1,11 @@
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.OpenApi.Models;
+using NultienShop.DataAccess.Domain;
 
 namespace NultienShopREST
 {
@@ -25,7 +27,9 @@ namespace NultienShopREST
 
             services.ConfigureContext(Configuration);
 
-            services.ConfigureResponseCompresion();
+            services.ConfigureAutoMapper();
+
+            services.ConfigureResponseCompression();
 
             services.AddControllers();
 
@@ -33,14 +37,17 @@ namespace NultienShopREST
             {
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "NultienShopApp", Version = "v1" });
             });
+
+            
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-        public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
+        public void Configure(IApplicationBuilder app, IWebHostEnvironment env, AppDBContext appDbContext)
         {
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
+                appDbContext.Database.Migrate();
             }
 
             app.UseResponseCompression();

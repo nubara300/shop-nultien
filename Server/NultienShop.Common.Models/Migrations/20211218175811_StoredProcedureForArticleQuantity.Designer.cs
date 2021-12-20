@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using NultienShop.DataAccess.Domain;
 
 namespace NultienShop.DataAccess.Domain.Migrations
 {
     [DbContext(typeof(AppDBContext))]
-    partial class AppDBContextModelSnapshot : ModelSnapshot
+    [Migration("20211218175811_StoredProcedureForArticleQuantity")]
+    partial class StoredProcedureForArticleQuantity
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -347,141 +349,71 @@ namespace NultienShop.DataAccess.Domain.Migrations
                         {
                             InventoryArticleId = 1,
                             ArticleId = 1,
-                            ArticleQuantity = 500,
+                            ArticleQuantity = 0,
                             InventoryId = 1
                         },
                         new
                         {
                             InventoryArticleId = 2,
                             ArticleId = 2,
-                            ArticleQuantity = 300,
+                            ArticleQuantity = 0,
                             InventoryId = 2
                         },
                         new
                         {
                             InventoryArticleId = 3,
                             ArticleId = 3,
-                            ArticleQuantity = 200,
+                            ArticleQuantity = 0,
                             InventoryId = 3
                         },
                         new
                         {
                             InventoryArticleId = 4,
                             ArticleId = 4,
-                            ArticleQuantity = 700,
+                            ArticleQuantity = 0,
                             InventoryId = 4
                         },
                         new
                         {
                             InventoryArticleId = 5,
                             ArticleId = 5,
-                            ArticleQuantity = 2700,
+                            ArticleQuantity = 0,
                             InventoryId = 5
                         },
                         new
                         {
                             InventoryArticleId = 6,
                             ArticleId = 6,
-                            ArticleQuantity = 50,
+                            ArticleQuantity = 0,
                             InventoryId = 6
                         },
                         new
                         {
                             InventoryArticleId = 7,
                             ArticleId = 7,
-                            ArticleQuantity = 1170,
+                            ArticleQuantity = 0,
                             InventoryId = 7
                         },
                         new
                         {
                             InventoryArticleId = 8,
                             ArticleId = 8,
-                            ArticleQuantity = 206,
+                            ArticleQuantity = 0,
                             InventoryId = 8
                         },
                         new
                         {
                             InventoryArticleId = 9,
                             ArticleId = 9,
-                            ArticleQuantity = 758,
+                            ArticleQuantity = 0,
                             InventoryId = 9
                         },
                         new
                         {
                             InventoryArticleId = 10,
                             ArticleId = 10,
-                            ArticleQuantity = 789,
-                            InventoryId = 10
-                        },
-                        new
-                        {
-                            InventoryArticleId = 11,
-                            ArticleId = 1,
-                            ArticleQuantity = 650,
-                            InventoryId = 10
-                        },
-                        new
-                        {
-                            InventoryArticleId = 12,
-                            ArticleId = 2,
-                            ArticleQuantity = 758,
-                            InventoryId = 9
-                        },
-                        new
-                        {
-                            InventoryArticleId = 13,
-                            ArticleId = 3,
-                            ArticleQuantity = 206,
-                            InventoryId = 8
-                        },
-                        new
-                        {
-                            InventoryArticleId = 14,
-                            ArticleId = 4,
-                            ArticleQuantity = 1170,
-                            InventoryId = 7
-                        },
-                        new
-                        {
-                            InventoryArticleId = 15,
-                            ArticleId = 5,
-                            ArticleQuantity = 50,
-                            InventoryId = 6
-                        },
-                        new
-                        {
-                            InventoryArticleId = 16,
-                            ArticleId = 6,
-                            ArticleQuantity = 2700,
-                            InventoryId = 5
-                        },
-                        new
-                        {
-                            InventoryArticleId = 17,
-                            ArticleId = 7,
-                            ArticleQuantity = 332,
-                            InventoryId = 4
-                        },
-                        new
-                        {
-                            InventoryArticleId = 18,
-                            ArticleId = 8,
-                            ArticleQuantity = 77,
-                            InventoryId = 3
-                        },
-                        new
-                        {
-                            InventoryArticleId = 19,
-                            ArticleId = 9,
-                            ArticleQuantity = 10,
-                            InventoryId = 2
-                        },
-                        new
-                        {
-                            InventoryArticleId = 20,
-                            ArticleId = 10,
                             ArticleQuantity = 0,
-                            InventoryId = 1
+                            InventoryId = 10
                         });
                 });
 

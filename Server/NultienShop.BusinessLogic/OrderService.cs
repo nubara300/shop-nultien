@@ -8,10 +8,10 @@ namespace NultienShop.BusinessLogic
 {
     public class OrderService : IOrderService
     {
-        private ILogger<CustomerService> _logger;
-        private IOrderRepository _orderRepository;
+        private readonly ILogger<CustomerService> _logger;
+        private readonly IOrderRepository _orderRepository;
 
-        public OrderService(ILogger<CustomerService> logger, IBaseRepository baseRepository, IOrderRepository orderRepository)
+        public OrderService(ILogger<CustomerService> logger, IOrderRepository orderRepository)
         {
             _logger = logger;
             _orderRepository = orderRepository;
@@ -19,8 +19,7 @@ namespace NultienShop.BusinessLogic
 
         public async Task<OrderMetrics> GetOrderMetrics(OrderMetricsRequest orderMetricsRequest)
         {
-            (int succsefull, int failed) = await _orderRepository.GetOrderMetrics(orderMetricsRequest);
-            return new() { SuccsefullOrders = succsefull, UnsucsefullOrders = failed };
+            return await _orderRepository.GetOrderMetrics(orderMetricsRequest);
         }
     }
 }

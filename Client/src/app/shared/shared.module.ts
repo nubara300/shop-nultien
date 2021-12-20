@@ -18,6 +18,7 @@ import { OnlyText } from './directives/only-text.directive';
 import { DebounceClickDirective } from './directives/debounce.directive';
 import { MatProgressBarModule } from "@angular/material/progress-bar";
 import { MatTableComponent } from './components/mat-table/mat-table.component';
+import { AppSimpleFormComponent } from './components/app-simple-form/app-simple-form.component';
 
 const materialModules = [
     //material modules
@@ -43,7 +44,7 @@ const directives = [
 ]
 
 @NgModule({
-    declarations: [directives, MatTableComponent],
+    declarations: [directives, MatTableComponent, AppSimpleFormComponent],
     imports: [
         CommonModule,
         FlexLayoutModule,

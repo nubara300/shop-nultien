@@ -9,7 +9,7 @@ namespace NultienShop.DataAccess
 {
     public class ArticleRepository : IArticleRepository
     {
-        protected readonly AppDBContext _context;
+        private readonly AppDBContext _context;
 
         public ArticleRepository(AppDBContext context)
         {
@@ -20,7 +20,9 @@ namespace NultienShop.DataAccess
         {
             return await _context.InventoryArticle.AsNoTracking()
                 .Where(x => x.ArticleId == articleId && x.Article.ArticlePrice <= maxPrice && x.ArticleQuantity > 0)
-                .Include(x => x.Article).Select(x => x.Article).FirstOrDefaultAsync();
+                .Include(x => x.Article)
+                .Select(x => x.Article)
+                .FirstOrDefaultAsync();
         }
     }
 }

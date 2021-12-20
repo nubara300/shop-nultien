@@ -2,17 +2,20 @@
 
 namespace NultienShop.Common.ViewModels
 {
-    public class OrdersVM
-    {
-        public int ArticleId { get; set; }
-        public int TotalPrice { get; set; }
-        public bool? Successfull { get; set; }
-        public DateTime DateCreated { get; set; }
-    }
     public class OrderMetrics
     {
-        public int SuccsefullOrders { get; set; }
-        public int UnsucsefullOrders { get; set; }
+        public OrderMetrics()
+        {
+        }
+
+        public OrderMetrics(int successfulOrders, int unsuccessfulOrders)
+        {
+            SuccessfulOrders = successfulOrders;
+            UnsuccessfulOrders = unsuccessfulOrders;
+        }
+
+        public int SuccessfulOrders { get; set; }
+        public int UnsuccessfulOrders { get; set; }
     }
 
     public class OrderMetricsRequest
@@ -22,6 +25,4 @@ namespace NultienShop.Common.ViewModels
         public DateTime? DateFrom { get; set; }
         public DateTime? DateTo { get; set; }
     }
-
-
 }

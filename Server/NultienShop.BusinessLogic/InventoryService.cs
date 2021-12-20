@@ -1,5 +1,4 @@
 ﻿using Microsoft.Extensions.Logging;
-using NultienShop.BusinessLogic.Mappers;
 using NultienShop.Common.ViewModels;
 using NultienShop.DataAccess.Domain.Models;
 using NultienShop.IBusinessLogic;
@@ -7,14 +6,16 @@ using NultienShop.IDataAccess;
 using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
+using Mapster;
+using NultienShop.Common.ViewModels.Helpers;
 
 namespace NultienShop.BusinessLogic
 {
     public class InventoryService : IInventoryService
     {
-        private ILogger<InventoryService> _logger;
-        private IBaseRepository _baseRepository;
-        private IInventoryRepository _inventoryRepository;
+        private readonly ILogger<InventoryService> _logger;
+        private readonly IBaseRepository _baseRepository;
+        private readonly IInventoryRepository _inventoryRepository;
 
         public InventoryService(ILogger<InventoryService> logger, IBaseRepository baseRepository, IInventoryRepository inventoryRepository)
         {
@@ -25,28 +26,28 @@ namespace NultienShop.BusinessLogic
 
         public async Task<PaginationResponse<InventoryVM>> GetInventories(int page, int size)
         {
-            var list = await _inventoryRepository.GetInventories(page, size);
+            var list = await _baseRepository.GetListByFilter<Inventory>(x=>x.IsDeleted!=true, new(page,size));
             var total = await _baseRepository.Count<Inventory>(x => true);
-            return new(new(), total);
+            return new(list.Adapt<List<InventoryVM>>(), total);
         }
 
         public async Task<List<InventoryArticle>> GetListOfInventoriesAndSetQuantity(int articleId, int quantity, int maxPrice)
         {
-            var inventoryArticles = await _inventoryRepository.GetArticleInventoriesByQuantity(articleId, quantity, maxPrice);
-            int difference = 0;
-            int quantityToRemove = quantity;
-            for (int i = 0; i < inventoryArticles.Count; i++)
+            var inventoryArticles = await _inventoryRepository.GetArticleInventoriesByQuantity(articleId, quantity);
+            var difference = 0;
+            var quantityToRemove = quantity;
+            foreach (var t in inventoryArticles)
             {
-                difference = inventoryArticles[i].ArticleQuantity - quantityToRemove;
-                inventoryArticles[i].ArticleQuantity = difference > 0 ? difference : 0;
+                difference = t.ArticleQuantity - quantityToRemove;
+                t.ArticleQuantity = difference > 0 ? difference : 0;
                 if (difference > 0) break;
                 quantityToRemove -= difference;
             }
             if (difference < 0 || inventoryArticles.Count == 0)
             {
-                var message = $"Required number of articles({quantity}) excedes the limit of available articles in all inventories.";
+                var message = $"Required number of articles({quantity}) exceeds the limit of available articles in all inventories.";
                 _logger.LogError(message);
-                throw new Exception(message);
+                throw new CustomException(message);
             }
             return inventoryArticles;
         }
@@ -54,8 +55,7 @@ namespace NultienShop.BusinessLogic
         public async Task<ValidationResponse> UpdateInventory(InventoryVM inventoryVM)
         {
             ValidationResponse validationResponse = new() { IsSuccess = false };
-            Inventory inventory = new();
-            InventoryArticle inventoryArticle = new();
+            Inventory inventory;
             if (inventoryVM.InventoryId > 0)
             {
                 inventory = await _baseRepository.GetByFilter<Inventory>(x => x.InventoryId == inventoryVM.InventoryId);
@@ -67,7 +67,7 @@ namespace NultienShop.BusinessLogic
 
                 inventory.InventoryName = inventoryVM.InventoryName;
 
-                inventoryArticle = await _baseRepository
+                var inventoryArticle = await _baseRepository
                     .GetByFilter<InventoryArticle>(x => x.InventoryId == inventory.InventoryId && inventoryVM.ArticleId == x.ArticleId);
 
                 if (inventoryArticle == null)
@@ -76,22 +76,24 @@ namespace NultienShop.BusinessLogic
                 }
                 else
                 {
-                    inventoryArticle.ArticleQuantity = inventoryVM.ArticlQuantity;
+                    inventoryArticle.ArticleQuantity = inventoryVM.ArticleQuantity;
+                    _baseRepository.AddOrUpdateContext(inventoryArticle);
                 }
+
                 _baseRepository.AddOrUpdateContext(inventory);
-                _baseRepository.AddOrUpdateContext(inventoryArticle);
                 await _baseRepository.SaveContextAsync();
             }
             else
             {
-                inventory = inventoryVM.AdaptToModel();
-                inventory.InventoryArticles.Add(new() { ArticleId = inventoryVM.ArticleId, ArticleQuantity = inventoryVM.ArticlQuantity, InventoryId = inventory.InventoryId });
+                //add validation for inventory data
+                inventory = inventoryVM.Adapt<Inventory>();
+                inventory.InventoryArticles.Add(new() { ArticleId = inventoryVM.ArticleId, ArticleQuantity = inventoryVM.ArticleQuantity, InventoryId = inventory.InventoryId });
                 _baseRepository.AddOrUpdateContext(inventory);
                 await _baseRepository.SaveContextAsync();
             }
 
             validationResponse.IsSuccess = true;
-            validationResponse.Message = "Succsefull update";
+            validationResponse.Message = "Successful update";
             return validationResponse;
         }
     }

@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq.Expressions;
 using System.Threading.Tasks;
+using NultienShop.Common.ViewModels;
 
 namespace NultienShop.IDataAccess
 {
@@ -11,6 +12,8 @@ namespace NultienShop.IDataAccess
         Task<T> GetByFilter<T>(Expression<Func<T, bool>> filter) where T : class;
 
         Task<List<T>> GetListByFilter<T>(Expression<Func<T, bool>> filter) where T : class;
+
+        Task<List<T>> GetListByFilter<T>(Expression<Func<T, bool>> filter,Pagination pagination) where T : class;
 
         Task<IDbContextTransaction> GetTransaction();
 

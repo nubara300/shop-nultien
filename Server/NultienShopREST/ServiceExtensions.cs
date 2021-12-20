@@ -10,6 +10,8 @@ using NultienShop.DataAccess.Domain;
 using NultienShop.IBusinessLogic;
 using NultienShop.IDataAccess;
 using System.IO.Compression;
+using Mapster;
+using MapsterMapper;
 
 namespace NultienShopREST
 {
@@ -17,7 +19,6 @@ namespace NultienShopREST
     {
         public static void ConfigureContext(this IServiceCollection services, IConfiguration configuration)
         {
-            _ = bool.TryParse(configuration.GetSection("useDatabase").Value, out bool useDatabase);
             _ = bool.TryParse(configuration.GetSection("useEFCoreLogging").Value, out bool useLogging);
             services.AddDbContext<AppDBContext>(options =>
             {
@@ -29,7 +30,7 @@ namespace NultienShopREST
                 options.UseSqlServer(configuration.GetConnectionString("DefaultConnection"), o =>
                 {
                     o.EnableRetryOnFailure(2);
-                    o.CommandTimeout(3);
+                    o.CommandTimeout(2);
                 });
             });
 
@@ -55,7 +56,7 @@ namespace NultienShopREST
             services.AddHttpClient();
         }
 
-        public static void ConfigureResponseCompresion(this IServiceCollection services)
+        public static void ConfigureResponseCompression(this IServiceCollection services)
         {
             // Manage response compression
             services.AddResponseCompression(options =>
@@ -67,6 +68,13 @@ namespace NultienShopREST
             {
                 options.Level = CompressionLevel.Optimal;
             });
+        }
+
+        public static void ConfigureAutoMapper(this IServiceCollection services)
+        {
+            var config = new TypeAdapterConfig();
+            services.AddSingleton(config);
+            services.AddScoped<IMapper, ServiceMapper>();
         }
     }
 }

@@ -1,5 +1,4 @@
 ﻿using Microsoft.Extensions.Logging;
-using NultienShop.BusinessLogic.Mappers;
 using NultienShop.Common.ViewModels;
 using NultienShop.DataAccess.Domain.Models;
 using NultienShop.IBusinessLogic;
@@ -7,15 +6,17 @@ using NultienShop.IDataAccess;
 using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
+using Mapster;
+using NultienShop.Common.ViewModels.Helpers;
 
 namespace NultienShop.BusinessLogic
 {
     public class ArticleService : IArticleService
     {
-        private ILogger<ArticleService> _logger;
-        private IBaseRepository _baseRepository;
-        private IInventoryService _inventoryService;
-        private IArticleRepository _articleRepository;
+        private readonly ILogger<ArticleService> _logger;
+        private readonly IBaseRepository _baseRepository;
+        private readonly IInventoryService _inventoryService;
+        private readonly IArticleRepository _articleRepository;
 
         public ArticleService(ILogger<ArticleService> logger, IBaseRepository baseRepository, IInventoryService inventoryService, IArticleRepository articleRepository)
         {
@@ -36,29 +37,26 @@ namespace NultienShop.BusinessLogic
 
                 if (article == null)
                 {
-                    //asumption is made that the article exists
                     _baseRepository.AddOrUpdateContext(new Order(quantity, customerId, false, articleId, null));
                     await _baseRepository.SaveContextAsync();
                     response.Message = "Article not available";
                     return response;
                 }
 
-                List<InventoryArticle> inventories = await _inventoryService.GetListOfInventoriesAndSetQuantity(articleId, quantity, maxPrice);
+                var inventories = await _inventoryService.GetListOfInventoriesAndSetQuantity(articleId, quantity, maxPrice);
                 //update inventory count
                 _baseRepository.AddOrUpdateContext(inventories);
-                //creating new succsefull order
+                //creating new successful order
                 _baseRepository.AddOrUpdateContext(new Order(quantity, customerId, true, article.ArticleId, article.ArticlePrice));
-                //save changes to databse
+                //save changes to database
                 await _baseRepository.SaveContextAsync();
                 response.IsSuccess = true;
-                response.Message = "Order succesfully created!";
+                response.Message = "Order successfully created!";
             }
-            //reconsider custom exception
-            catch (Exception ex)
+            catch (CustomException ex)
             {
-                _logger.LogInformation($"Exception has occured");
-                response.Errors.Add(ex.Message);
-                throw;
+                response.Message = ex.Message;
+                response.IsSuccess = false;
             }
 
             return response;
@@ -66,9 +64,9 @@ namespace NultienShop.BusinessLogic
 
         public async Task<PaginationResponse<ArticleVM>> GetArticles(int page, int size)
         {
-            List<ArticleVM> list = (await _baseRepository.GetListByFilter<Article>(x => x.IsDeleted != true)).AdaptToViewModel();
-            int total = await _baseRepository.Count<Article>(x => x.IsDeleted != true);
-            return new(list, total);
+            var list = await _baseRepository.GetListByFilter<Article>(x => x.IsDeleted != true, new(page, size));
+            var total = await _baseRepository.Count<Article>(x => x.IsDeleted != true);
+            return new(list.Adapt<List<ArticleVM>>(), total);
         }
 
         public async Task<Article> IsArticleInInventory(int articleId, int maxPrice)

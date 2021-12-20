@@ -1,4 +1,5 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using System.Linq;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using NultienShop.DataAccess.Domain.Models;
 using System.Reflection;
@@ -14,6 +15,10 @@ namespace NultienShop.DataAccess.Domain
         public virtual DbSet<Inventory> Inventory { get; set; }
         public virtual DbSet<InventoryArticle> InventoryArticle { get; set; }
         public virtual DbSet<Order> Order { get; set; }
+
+        public AppDBContext(DbContextOptions<AppDBContext> options) : base(options)
+        {
+        }
 
         public AppDBContext(DbContextOptions<AppDBContext> options, IConfiguration configuration) : base(options)
         {

@@ -1,0 +1,22 @@
+<mat-card>
+  <mat-card-title>{{title}}</mat-card-title>
+  <mat-card-content>
+    <form [formGroup]='formGroup'>
+        <div *ngFor='let control of formConfiguration' fxLayout="row" fxLayoutGap='15px' fxFlex='50'>
+            <mat-form-field fxFlex='100' appearance="standard">
+                <mat-label>{{control.label}}</mat-label>
+                <input matInput formControlName='name' [required]='control.isRequired===true'>
+                <mat-error> Field is {{formGroup.controls[control.key].errors?.required ? 'required':'invalid'}} </mat-error>
+            </mat-form-field>
+        </div>
+    </form>
+  </mat-card-content>
+  <mat-card-actions>
+    <div fxLayout='row' fxLayoutAlign='end' fxLayoutGap='15px'>
+        <button *ngFor='let action of actions' (click)='actionClicked(action)' [matTooltip]="action.tooltip">
+            {{action.label}}
+            <mat-icon *ngIf='action.icon' class="{{action.iconClass}}" style="font-size: 20px;">{{action.icon}}</mat-icon>
+        </button>
+    </div>
+  </mat-card-actions>
+</mat-card>

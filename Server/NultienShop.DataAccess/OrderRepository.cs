@@ -9,36 +9,36 @@ namespace NultienShop.DataAccess
 {
     public class OrderRepository : IOrderRepository
     {
-        protected readonly AppDBContext _context;
+        private readonly AppDBContext _context;
 
         public OrderRepository(AppDBContext context)
         {
             _context = context;
         }
 
-        public async Task<(int succsefull, int failed)> GetOrderMetrics(OrderMetricsRequest orderMetricsRequest)
+        public async Task<OrderMetrics> GetOrderMetrics(OrderMetricsRequest orderMetricsRequest)
         {
-            var queery = _context.ArticleOrder.AsNoTracking().AsQueryable();
+            var query = _context.ArticleOrder.AsNoTracking().AsQueryable();
             if (orderMetricsRequest.ArticleId > 0)
             {
-                queery = queery.Where(x => x.ArticleId == orderMetricsRequest.ArticleId);
+                query = query.Where(x => x.ArticleId == orderMetricsRequest.ArticleId);
             }
             if (orderMetricsRequest.CustomerId > 0)
             {
-                queery = queery.Where(x => x.Order.CustomerId == orderMetricsRequest.CustomerId);
+                query = query.Where(x => x.Order.CustomerId == orderMetricsRequest.CustomerId);
             }
             if (orderMetricsRequest.DateTo.HasValue)
             {
-                queery = queery.Where(x => x.Order.DateCreated.CompareTo(orderMetricsRequest.DateTo.Value) <= 0);
+                query = query.Where(x => x.Order.DateCreated.CompareTo(orderMetricsRequest.DateTo.Value) <= 0);
             }
             if (orderMetricsRequest.DateFrom.HasValue)
             {
-                queery = queery.Where(x => x.Order.DateCreated.CompareTo(orderMetricsRequest.DateFrom.Value) >= 0);
+                query = query.Where(x => x.Order.DateCreated.CompareTo(orderMetricsRequest.DateFrom.Value) >= 0);
             }
-            var succsefull = await queery.Where(x => x.Order.Completed == true).Select(x => x.Order).CountAsync();
-            var failed = await queery.Where(x => x.Order.Completed != true).Select(x => x.Order).CountAsync();
+            var successful = await query.Where(x => x.Order.Completed == true).Select(x => x.Order).CountAsync();
+            var failed = await query.Where(x => x.Order.Completed != true).Select(x => x.Order).CountAsync();
 
-            return (succsefull, failed);
+            return new (successful, failed);
         }
     }
 }

@@ -1,11 +1,11 @@
 export interface ActionType {
   label: string;
-  icon: string;
+  icon?: string;
   event: string;
   btnClass?: string;
   hover?: string;
-  iconClass?:string;
-  tooltip:string;
+  iconClass?: string;
+  tooltip: string;
 }
 
 export interface ColumnType {

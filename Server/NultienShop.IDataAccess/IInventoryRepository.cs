@@ -6,8 +6,6 @@ namespace NultienShop.IDataAccess
 {
     public interface IInventoryRepository
     {
-        Task<List<InventoryArticle>> GetArticleInventoriesByQuantity(int articleId, int quantity, int maxPrice);
-
-        Task<List<Inventory>> GetInventories(int page, int size);
+        Task<List<InventoryArticle>> GetArticleInventoriesByQuantity(int articleId, int quantity);
     }
 }

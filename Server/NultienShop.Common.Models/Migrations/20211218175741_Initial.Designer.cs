@@ -10,7 +10,7 @@ using NultienShop.DataAccess.Domain;
 namespace NultienShop.DataAccess.Domain.Migrations
 {
     [DbContext(typeof(AppDBContext))]
-    [Migration("20211217021423_Initial")]
+    [Migration("20211218175741_Initial")]
     partial class Initial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -52,70 +52,70 @@ namespace NultienShop.DataAccess.Domain.Migrations
                         {
                             ArticleId = 1,
                             ArticleName = "Article No.1",
-                            ArticlePrice = 258,
+                            ArticlePrice = 100,
                             DateCreated = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified)
                         },
                         new
                         {
                             ArticleId = 2,
                             ArticleName = "Article No.2",
-                            ArticlePrice = 777,
+                            ArticlePrice = 350,
                             DateCreated = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified)
                         },
                         new
                         {
                             ArticleId = 3,
                             ArticleName = "Article No.3",
-                            ArticlePrice = 784,
+                            ArticlePrice = 750,
                             DateCreated = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified)
                         },
                         new
                         {
                             ArticleId = 4,
                             ArticleName = "Article No.4",
-                            ArticlePrice = 928,
+                            ArticlePrice = 400,
                             DateCreated = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified)
                         },
                         new
                         {
                             ArticleId = 5,
                             ArticleName = "Article No.5",
-                            ArticlePrice = 714,
+                            ArticlePrice = 600,
                             DateCreated = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified)
                         },
                         new
                         {
                             ArticleId = 6,
                             ArticleName = "Article No.6",
-                            ArticlePrice = 988,
+                            ArticlePrice = 2000,
                             DateCreated = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified)
                         },
                         new
                         {
                             ArticleId = 7,
                             ArticleName = "Article No.7",
-                            ArticlePrice = 525,
+                            ArticlePrice = 400,
                             DateCreated = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified)
                         },
                         new
                         {
                             ArticleId = 8,
                             ArticleName = "Article No.8",
-                            ArticlePrice = 666,
+                            ArticlePrice = 600,
                             DateCreated = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified)
                         },
                         new
                         {
                             ArticleId = 9,
                             ArticleName = "Article No.9",
-                            ArticlePrice = 792,
+                            ArticlePrice = 600,
                             DateCreated = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified)
                         },
                         new
                         {
                             ArticleId = 10,
                             ArticleName = "Article No.10",
-                            ArticlePrice = 839,
+                            ArticlePrice = 600,
                             DateCreated = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified)
                         });
                 });
@@ -172,61 +172,61 @@ namespace NultienShop.DataAccess.Domain.Migrations
                         new
                         {
                             CustomerId = 1,
-                            CustomerName = "Customer 1",
+                            CustomerName = "Customer No.1",
                             DateCreated = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified)
                         },
                         new
                         {
                             CustomerId = 2,
-                            CustomerName = "Customer 2",
+                            CustomerName = "Customer No.2",
                             DateCreated = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified)
                         },
                         new
                         {
                             CustomerId = 3,
-                            CustomerName = "Customer 3",
+                            CustomerName = "Customer No.3",
                             DateCreated = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified)
                         },
                         new
                         {
                             CustomerId = 4,
-                            CustomerName = "Customer 4",
+                            CustomerName = "Customer No.4",
                             DateCreated = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified)
                         },
                         new
                         {
                             CustomerId = 5,
-                            CustomerName = "Customer 5",
+                            CustomerName = "Customer No.5",
                             DateCreated = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified)
                         },
                         new
                         {
                             CustomerId = 6,
-                            CustomerName = "Customer 6",
+                            CustomerName = "Customer No.6",
                             DateCreated = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified)
                         },
                         new
                         {
                             CustomerId = 7,
-                            CustomerName = "Customer 7",
+                            CustomerName = "Customer No.7",
                             DateCreated = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified)
                         },
                         new
                         {
                             CustomerId = 8,
-                            CustomerName = "Customer 8",
+                            CustomerName = "Customer No.8",
                             DateCreated = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified)
                         },
                         new
                         {
                             CustomerId = 9,
-                            CustomerName = "Customer 9",
+                            CustomerName = "Customer No.9",
                             DateCreated = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified)
                         },
                         new
                         {
                             CustomerId = 10,
-                            CustomerName = "Customer 10",
+                            CustomerName = "Customer No.10,",
                             DateCreated = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified)
                         });
                 });
@@ -262,71 +262,61 @@ namespace NultienShop.DataAccess.Domain.Migrations
                         {
                             InventoryId = 1,
                             DateCreated = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            InventoryLocation = "Inventory location id-1",
                             InventoryName = "Inventory No.1"
                         },
                         new
                         {
                             InventoryId = 2,
                             DateCreated = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            InventoryLocation = "Inventory location id-2",
                             InventoryName = "Inventory No.2"
                         },
                         new
                         {
                             InventoryId = 3,
                             DateCreated = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            InventoryLocation = "Inventory location id-3",
                             InventoryName = "Inventory No.3"
                         },
                         new
                         {
                             InventoryId = 4,
                             DateCreated = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            InventoryLocation = "Inventory location id-4",
                             InventoryName = "Inventory No.4"
                         },
                         new
                         {
                             InventoryId = 5,
                             DateCreated = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            InventoryLocation = "Inventory location id-5",
                             InventoryName = "Inventory No.5"
                         },
                         new
                         {
                             InventoryId = 6,
                             DateCreated = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            InventoryLocation = "Inventory location id-6",
                             InventoryName = "Inventory No.6"
                         },
                         new
                         {
                             InventoryId = 7,
                             DateCreated = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            InventoryLocation = "Inventory location id-7",
                             InventoryName = "Inventory No.7"
                         },
                         new
                         {
                             InventoryId = 8,
                             DateCreated = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            InventoryLocation = "Inventory location id-8",
                             InventoryName = "Inventory No.8"
                         },
                         new
                         {
                             InventoryId = 9,
                             DateCreated = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            InventoryLocation = "Inventory location id-9",
                             InventoryName = "Inventory No.9"
                         },
                         new
                         {
                             InventoryId = 10,
                             DateCreated = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
-                            InventoryLocation = "Inventory location id-10",
-                            InventoryName = "Inventory No.10"
+                            InventoryName = "Inventory No.10,"
                         });
                 });
 
@@ -359,70 +349,70 @@ namespace NultienShop.DataAccess.Domain.Migrations
                         {
                             InventoryArticleId = 1,
                             ArticleId = 1,
-                            ArticleQuantity = 292,
+                            ArticleQuantity = 0,
                             InventoryId = 1
                         },
                         new
                         {
                             InventoryArticleId = 2,
                             ArticleId = 2,
-                            ArticleQuantity = 239,
+                            ArticleQuantity = 0,
                             InventoryId = 2
                         },
                         new
                         {
                             InventoryArticleId = 3,
                             ArticleId = 3,
-                            ArticleQuantity = 235,
+                            ArticleQuantity = 0,
                             InventoryId = 3
                         },
                         new
                         {
                             InventoryArticleId = 4,
                             ArticleId = 4,
-                            ArticleQuantity = 209,
+                            ArticleQuantity = 0,
                             InventoryId = 4
                         },
                         new
                         {
                             InventoryArticleId = 5,
                             ArticleId = 5,
-                            ArticleQuantity = 439,
+                            ArticleQuantity = 0,
                             InventoryId = 5
                         },
                         new
                         {
                             InventoryArticleId = 6,
                             ArticleId = 6,
-                            ArticleQuantity = 303,
+                            ArticleQuantity = 0,
                             InventoryId = 6
                         },
                         new
                         {
                             InventoryArticleId = 7,
                             ArticleId = 7,
-                            ArticleQuantity = 129,
+                            ArticleQuantity = 0,
                             InventoryId = 7
                         },
                         new
                         {
                             InventoryArticleId = 8,
                             ArticleId = 8,
-                            ArticleQuantity = 87,
+                            ArticleQuantity = 0,
                             InventoryId = 8
                         },
                         new
                         {
                             InventoryArticleId = 9,
                             ArticleId = 9,
-                            ArticleQuantity = 12,
+                            ArticleQuantity = 0,
                             InventoryId = 9
                         },
                         new
                         {
                             InventoryArticleId = 10,
                             ArticleId = 10,
-                            ArticleQuantity = 37,
+                            ArticleQuantity = 0,
                             InventoryId = 10
                         });
                 });

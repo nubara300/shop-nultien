@@ -11,8 +11,7 @@ import { IPageableResponse } from '../models/paginationResponse';
 })
 export class CommonService {
   constructor(private http: HttpClient) {
-    this.post<IPageableResponse<string>>('article');
-    this.post<Article>('article');
+    
   }
 
   get<T>(path: EndopintsType): Observable<T> {
