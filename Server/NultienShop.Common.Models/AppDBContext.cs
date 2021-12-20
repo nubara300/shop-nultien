@@ -1,12 +1,11 @@
-﻿using System.Linq;
-using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using NultienShop.DataAccess.Domain.Models;
 using System.Reflection;
 
 namespace NultienShop.DataAccess.Domain
 {
-    public class AppDBContext : DbContext
+    public class TheShopContext : DbContext
     {
         private readonly IConfiguration _configuration;
         public virtual DbSet<Article> Article { get; set; }
@@ -16,11 +15,11 @@ namespace NultienShop.DataAccess.Domain
         public virtual DbSet<InventoryArticle> InventoryArticle { get; set; }
         public virtual DbSet<Order> Order { get; set; }
 
-        public AppDBContext(DbContextOptions<AppDBContext> options) : base(options)
+        public TheShopContext(DbContextOptions<TheShopContext> options) : base(options)
         {
         }
 
-        public AppDBContext(DbContextOptions<AppDBContext> options, IConfiguration configuration) : base(options)
+        public TheShopContext(DbContextOptions<TheShopContext> options, IConfiguration configuration) : base(options)
         {
             _configuration = configuration;
         }

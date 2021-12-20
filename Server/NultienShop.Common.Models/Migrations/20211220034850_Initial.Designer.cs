@@ -9,7 +9,7 @@ using NultienShop.DataAccess.Domain;
 
 namespace NultienShop.DataAccess.Domain.Migrations
 {
-    [DbContext(typeof(AppDBContext))]
+    [DbContext(typeof(TheShopContext))]
     [Migration("20211220034850_Initial")]
     partial class Initial
     {

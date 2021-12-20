@@ -12,15 +12,15 @@ namespace NultienShopTEST.Repositories
 {
     public class OrderRepositoryTests
     {
-        private readonly DbContextOptions<AppDBContext> _dbContextOptions;
-        public AppDBContext _dbContextMock;
+        private readonly DbContextOptions<TheShopContext> _dbContextOptions;
+        public TheShopContext _dbContextMock;
 
         public OrderRepositoryTests()
         {
-            this._dbContextOptions = new DbContextOptionsBuilder<AppDBContext>()
+            this._dbContextOptions = new DbContextOptionsBuilder<TheShopContext>()
                 .UseInMemoryDatabase(databaseName: "NultienTestDB")
                 .Options;
-            _dbContextMock = new AppDBContext(_dbContextOptions);
+            _dbContextMock = new TheShopContext(_dbContextOptions);
             _dbContextMock.Order.AddRange(new Order(10, 1, true, 1, 1000),
                 new Order(66, 1, false, 1, 1800),
                 new Order(700, 1, true, 1, 1400));

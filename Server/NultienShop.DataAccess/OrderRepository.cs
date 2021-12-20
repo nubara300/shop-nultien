@@ -9,9 +9,9 @@ namespace NultienShop.DataAccess
 {
     public class OrderRepository : IOrderRepository
     {
-        private readonly AppDBContext _context;
+        private readonly TheShopContext _context;
 
-        public OrderRepository(AppDBContext context)
+        public OrderRepository(TheShopContext context)
         {
             _context = context;
         }

@@ -42,12 +42,12 @@ namespace NultienShopREST
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-        public void Configure(IApplicationBuilder app, IWebHostEnvironment env, AppDBContext appDbContext)
+        public void Configure(IApplicationBuilder app, IWebHostEnvironment env, TheShopContext TheShopContext)
         {
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
-                appDbContext.Database.Migrate();
+                TheShopContext.Database.Migrate();
             }
 
             app.UseResponseCompression();

@@ -11,15 +11,15 @@ namespace NultienShopTEST.Repositories
 {
     public class ArticleRepositoryTests
     {
-        public readonly DbContextOptions<AppDBContext> _dbContextOptions;
-        public AppDBContext _dbContextMock;
+        public readonly DbContextOptions<TheShopContext> _dbContextOptions;
+        public TheShopContext _dbContextMock;
 
         public ArticleRepositoryTests()
         {
-            this._dbContextOptions = new DbContextOptionsBuilder<AppDBContext>()
+            this._dbContextOptions = new DbContextOptionsBuilder<TheShopContext>()
                 .UseInMemoryDatabase(databaseName: "NultienTestDB")
                 .Options;
-            _dbContextMock = new AppDBContext(_dbContextOptions);
+            _dbContextMock = new TheShopContext(_dbContextOptions);
             _dbContextMock.Article.AddRange(InitialData.ArticleData);
             _dbContextMock.Inventory.AddRange(InitialData.InventoryData);
             _dbContextMock.InventoryArticle.AddRange(InitialData.InventoryArticleData);

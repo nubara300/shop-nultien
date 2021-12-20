@@ -13,9 +13,9 @@ namespace NultienShop.DataAccess
 {
     public class BaseRepository : IBaseRepository
     {
-        private readonly AppDBContext _context;
+        private readonly TheShopContext _context;
 
-        public BaseRepository(AppDBContext context)
+        public BaseRepository(TheShopContext context)
         {
             _context = context;
         }

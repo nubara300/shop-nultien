@@ -9,9 +9,9 @@ namespace NultienShop.DataAccess
 {
     public class ArticleRepository : IArticleRepository
     {
-        private readonly AppDBContext _context;
+        private readonly TheShopContext _context;
 
-        public ArticleRepository(AppDBContext context)
+        public ArticleRepository(TheShopContext context)
         {
             _context = context;
         }

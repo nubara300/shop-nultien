@@ -10,14 +10,15 @@ namespace NultienShop.DataAccess.Domain.Models
         {
         }
 
-        public Order(int quantity, int customerId, bool completed, int articleId, int? articlePrice)
+        public Order(int quantity, int customerId, bool completed, int? articleId, int? articlePrice)
         {
             Quantity = quantity;
             CustomerId = customerId;
             DateCreated = DateTime.UtcNow;
             Completed = completed;
             TotalCost = articlePrice.HasValue ? articlePrice * quantity : 0;
-            ArticleOrders.Add(new() { ArticleId = articleId });
+            if (articleId.HasValue)
+                ArticleOrders.Add(new() { ArticleId = articleId.Value });
         }
 
         public int OrderId { get; set; }

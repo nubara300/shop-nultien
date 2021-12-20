@@ -8,8 +8,8 @@ using NultienShop.DataAccess.Domain;
 
 namespace NultienShop.DataAccess.Domain.Migrations
 {
-    [DbContext(typeof(AppDBContext))]
-    partial class AppDBContextModelSnapshot : ModelSnapshot
+    [DbContext(typeof(TheShopContext))]
+    partial class TheShopContextModelSnapshot : ModelSnapshot
     {
         protected override void BuildModel(ModelBuilder modelBuilder)
         {

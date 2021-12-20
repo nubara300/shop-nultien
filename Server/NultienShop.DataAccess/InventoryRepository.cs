@@ -11,9 +11,9 @@ namespace NultienShop.DataAccess
 {
     public class InventoryRepository : IInventoryRepository
     {
-        private readonly AppDBContext _context;
+        private readonly TheShopContext _context;
 
-        public InventoryRepository(AppDBContext context)
+        public InventoryRepository(TheShopContext context)
         {
             _context = context;
         }

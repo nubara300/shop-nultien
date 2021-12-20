@@ -13,16 +13,16 @@ namespace NultienShopTEST.Repositories
 {
     public class InventoryRepositoryTests
     {
-        private readonly DbContextOptions<AppDBContext> _dbContextOptions;
-        public AppDBContext _dbContextMock;
+        private readonly DbContextOptions<TheShopContext> _dbContextOptions;
+        public TheShopContext _dbContextMock;
 
         public InventoryRepositoryTests()
         {
-            this._dbContextOptions = new DbContextOptionsBuilder<AppDBContext>()
+            this._dbContextOptions = new DbContextOptionsBuilder<TheShopContext>()
                 .UseInMemoryDatabase(databaseName: "NultienTestDB")
                 .Options;
             
-            _dbContextMock = new AppDBContext(_dbContextOptions);
+            _dbContextMock = new TheShopContext(_dbContextOptions);
         }
 
         private InventoryRepository CreateInventoryRepository()

@@ -30,19 +30,17 @@ namespace NultienShop.BusinessLogic
         {
             ValidationResponse response = new() { IsSuccess = false };
             _logger.LogInformation($"Article with id= {articleId}, and quantity={quantity} has been queried");
-
             try
             {
                 var article = await IsArticleInInventory(articleId, maxPrice);
 
                 if (article == null)
                 {
-                    _baseRepository.AddOrUpdateContext(new Order(quantity, customerId, false, articleId, null));
-                    await _baseRepository.SaveContextAsync();
+                    await CreateOrder(new Order(quantity, customerId, false, null, null));
                     response.Message = "Article not available";
                     return response;
                 }
-
+                
                 var inventories = await _inventoryService.GetListOfInventoriesAndSetQuantity(articleId, quantity, maxPrice);
                 //update inventory count
                 _baseRepository.AddOrUpdateContext(inventories);
@@ -55,6 +53,7 @@ namespace NultienShop.BusinessLogic
             }
             catch (CustomException ex)
             {
+                await CreateOrder(new Order(quantity, customerId, false, articleId, null));
                 response.Message = ex.Message;
                 response.IsSuccess = false;
             }
@@ -72,6 +71,16 @@ namespace NultienShop.BusinessLogic
         public async Task<Article> IsArticleInInventory(int articleId, int maxPrice)
         {
             return await _articleRepository.IsArticleValidAndInAnyInventory(articleId, maxPrice);
+        }
+
+        private async Task CreateOrder(Order order)
+        {
+            if (order != null)
+            {
+                _baseRepository.AddOrUpdateContext(order);
+                await _baseRepository.SaveContextAsync();
+            }
+
         }
     }
 }

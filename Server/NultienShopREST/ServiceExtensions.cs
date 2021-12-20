@@ -20,7 +20,7 @@ namespace NultienShopREST
         public static void ConfigureContext(this IServiceCollection services, IConfiguration configuration)
         {
             _ = bool.TryParse(configuration.GetSection("useEFCoreLogging").Value, out bool useLogging);
-            services.AddDbContext<AppDBContext>(options =>
+            services.AddDbContext<TheShopContext>(options =>
             {
                 if (useLogging)
                 {
@@ -35,7 +35,7 @@ namespace NultienShopREST
             });
 
             //add db context and set other database settings
-            services.AddScoped<DbContext, AppDBContext>();
+            services.AddScoped<DbContext, TheShopContext>();
         }
 
         public static void MapInterfaceImplementation(this IServiceCollection services)
