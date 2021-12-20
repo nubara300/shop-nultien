@@ -25,15 +25,20 @@ Solution was switched to REST API technology, so it can easily be connected to s
 
 ## Start
 
-### SQL Server
-- An instance of sql server is required for the project to work. 
-- On project startup small database will be created.
-
 ### Visual Studio 2019/2022
 - In Microsoft Visual Studio 2019/2022 set NultienShop.REST as a startup project.
-- Open appsettings.json and change DefaultConnection to your database connection string.
+- If you want to use databse for the project, open appsettings.json and change following
+	"ConnectionStrings": {
+		"DefaultConnection": "YOUR_DATABASE_CONNECTION"
+	},
+	"useInMemoryDatabase":false
 - Press f5 to start the project.
 - After startup Swagger should appear in default browser, and project is ready for use.
+
+
+### SQL Server
+- In the case of using databse an instance of sql server is required for the project to work. 
+- After setting up connection string on project startup small database will be created.
 
 ## Tests
 

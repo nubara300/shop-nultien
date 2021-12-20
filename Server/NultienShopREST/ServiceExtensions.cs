@@ -20,6 +20,8 @@ namespace NultienShopREST
         public static void ConfigureContext(this IServiceCollection services, IConfiguration configuration)
         {
             _ = bool.TryParse(configuration.GetSection("useEFCoreLogging").Value, out bool useLogging);
+            _ = bool.TryParse(configuration.GetSection("useInMemoryDatabase").Value, out bool useInMemoryDatabase);
+
             services.AddDbContext<TheShopContext>(options =>
             {
                 if (useLogging)
@@ -27,11 +29,19 @@ namespace NultienShopREST
                     options.UseLoggerFactory(LoggerFactory.Create(builder => { builder.AddConsole(); }));
                     options.EnableSensitiveDataLogging();
                 }
-                options.UseSqlServer(configuration.GetConnectionString("DefaultConnection"), o =>
+
+                if (useInMemoryDatabase)
                 {
-                    o.EnableRetryOnFailure(2);
-                    o.CommandTimeout(2);
-                });
+                    options.UseInMemoryDatabase("NultienShopDB");
+                }
+                else
+                {
+                    options.UseSqlServer(configuration.GetConnectionString("DefaultConnection"), o =>
+                    {
+                        o.EnableRetryOnFailure(2);
+                        o.CommandTimeout(2);
+                    });
+                }
             });
 
             //add db context and set other database settings

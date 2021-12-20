@@ -38,7 +38,7 @@ namespace NultienShopREST
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "NultienShopApp", Version = "v1" });
             });
 
-            
+
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -47,7 +47,15 @@ namespace NultienShopREST
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
-                TheShopContext.Database.Migrate();
+                _ = bool.TryParse(Configuration.GetSection("useInMemoryDatabase").Value, out bool useInMemoryDatabase);
+                if (useInMemoryDatabase)
+                {
+                    TheShopContext.Database.EnsureCreated();
+                }
+                else
+                {
+                    TheShopContext.Database.Migrate();
+                }
             }
 
             app.UseResponseCompression();
