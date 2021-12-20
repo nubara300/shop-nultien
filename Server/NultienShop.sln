@@ -21,7 +21,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "NultienShop.DataAccess.Doma
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "NultienShop.Common.ViewModels", "NultienShop.Common.ViewModels\NultienShop.Common.ViewModels.csproj", "{3E2F04AD-DB4D-4A5F-9427-CAA2B40AC83E}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "4. NultienShopREST", "NultienShopREST\4. NultienShopREST.csproj", "{D0C2B94D-19D6-4875-A71A-CDA16C9EEEBB}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "4. NultienShop.REST", "NultienShopREST\4. NultienShop.REST.csproj", "{D0C2B94D-19D6-4875-A71A-CDA16C9EEEBB}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "NultienShopTEST", "NultienShopTEST\NultienShopTEST.csproj", "{3F4BE791-D35C-46D2-B42C-984B4B00A7AB}"
 EndProject

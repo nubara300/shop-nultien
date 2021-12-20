@@ -5,7 +5,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace NultienShop.DataAccess.Domain.Migrations
 {
-    public partial class StoredProcedureForArticleQuantity : Migration
+    public partial class ArticleProcedure : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
