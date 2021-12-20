@@ -6,7 +6,6 @@ using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
 using NultienShop.Common.ViewModels;
 using Xunit;
-using NultienShop.DataAccess.Domain.ModelConfiguration;
 using NultienShop.DataAccess.Domain.Models;
 
 namespace NultienShopTEST.Repositories

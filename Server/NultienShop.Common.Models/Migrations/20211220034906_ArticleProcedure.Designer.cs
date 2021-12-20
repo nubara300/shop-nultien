@@ -10,8 +10,8 @@ using NultienShop.DataAccess.Domain;
 namespace NultienShop.DataAccess.Domain.Migrations
 {
     [DbContext(typeof(AppDBContext))]
-    [Migration("20211220010839_InitialDataChange")]
-    partial class InitialDataChange
+    [Migration("20211220034906_ArticleProcedure")]
+    partial class ArticleProcedure
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {

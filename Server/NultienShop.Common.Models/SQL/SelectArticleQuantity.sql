@@ -1,5 +1,5 @@
 ﻿
-USE[NultienShopDBTest]
+USE[NultienShopDB]
 GO
 /****** Object:  StoredProcedure [dbo].[SelectArticleQuantity]    Script Date: 12/17/2021 12:38:37 AM ******/
     SET ANSI_NULLS ON

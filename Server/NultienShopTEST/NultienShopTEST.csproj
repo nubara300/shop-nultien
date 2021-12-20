@@ -1,4 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <TargetFramework>net5.0</TargetFramework>
@@ -23,7 +23,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\NultienShop.BusinessLogicAbstract\NultienShop.IBusinessLogic.csproj" />
-    <ProjectReference Include="..\NultienShopREST\4. NultienShopREST.csproj" />
+    <ProjectReference Include="..\NultienShopREST\4. NultienShop.REST.csproj" />
   </ItemGroup>
 
 </Project>

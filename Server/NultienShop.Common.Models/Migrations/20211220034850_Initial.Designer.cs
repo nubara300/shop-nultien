@@ -10,7 +10,7 @@ using NultienShop.DataAccess.Domain;
 namespace NultienShop.DataAccess.Domain.Migrations
 {
     [DbContext(typeof(AppDBContext))]
-    [Migration("20211218175741_Initial")]
+    [Migration("20211220034850_Initial")]
     partial class Initial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -349,71 +349,141 @@ namespace NultienShop.DataAccess.Domain.Migrations
                         {
                             InventoryArticleId = 1,
                             ArticleId = 1,
-                            ArticleQuantity = 0,
+                            ArticleQuantity = 500,
                             InventoryId = 1
                         },
                         new
                         {
                             InventoryArticleId = 2,
                             ArticleId = 2,
-                            ArticleQuantity = 0,
+                            ArticleQuantity = 300,
                             InventoryId = 2
                         },
                         new
                         {
                             InventoryArticleId = 3,
                             ArticleId = 3,
-                            ArticleQuantity = 0,
+                            ArticleQuantity = 200,
                             InventoryId = 3
                         },
                         new
                         {
                             InventoryArticleId = 4,
                             ArticleId = 4,
-                            ArticleQuantity = 0,
+                            ArticleQuantity = 700,
                             InventoryId = 4
                         },
                         new
                         {
                             InventoryArticleId = 5,
                             ArticleId = 5,
-                            ArticleQuantity = 0,
+                            ArticleQuantity = 2700,
                             InventoryId = 5
                         },
                         new
                         {
                             InventoryArticleId = 6,
                             ArticleId = 6,
-                            ArticleQuantity = 0,
+                            ArticleQuantity = 50,
                             InventoryId = 6
                         },
                         new
                         {
                             InventoryArticleId = 7,
                             ArticleId = 7,
-                            ArticleQuantity = 0,
+                            ArticleQuantity = 1170,
                             InventoryId = 7
                         },
                         new
                         {
                             InventoryArticleId = 8,
                             ArticleId = 8,
-                            ArticleQuantity = 0,
+                            ArticleQuantity = 206,
                             InventoryId = 8
                         },
                         new
                         {
                             InventoryArticleId = 9,
                             ArticleId = 9,
-                            ArticleQuantity = 0,
+                            ArticleQuantity = 758,
                             InventoryId = 9
                         },
                         new
                         {
                             InventoryArticleId = 10,
                             ArticleId = 10,
-                            ArticleQuantity = 0,
+                            ArticleQuantity = 789,
                             InventoryId = 10
+                        },
+                        new
+                        {
+                            InventoryArticleId = 11,
+                            ArticleId = 1,
+                            ArticleQuantity = 650,
+                            InventoryId = 10
+                        },
+                        new
+                        {
+                            InventoryArticleId = 12,
+                            ArticleId = 2,
+                            ArticleQuantity = 758,
+                            InventoryId = 9
+                        },
+                        new
+                        {
+                            InventoryArticleId = 13,
+                            ArticleId = 3,
+                            ArticleQuantity = 206,
+                            InventoryId = 8
+                        },
+                        new
+                        {
+                            InventoryArticleId = 14,
+                            ArticleId = 4,
+                            ArticleQuantity = 1170,
+                            InventoryId = 7
+                        },
+                        new
+                        {
+                            InventoryArticleId = 15,
+                            ArticleId = 5,
+                            ArticleQuantity = 50,
+                            InventoryId = 6
+                        },
+                        new
+                        {
+                            InventoryArticleId = 16,
+                            ArticleId = 6,
+                            ArticleQuantity = 2700,
+                            InventoryId = 5
+                        },
+                        new
+                        {
+                            InventoryArticleId = 17,
+                            ArticleId = 7,
+                            ArticleQuantity = 332,
+                            InventoryId = 4
+                        },
+                        new
+                        {
+                            InventoryArticleId = 18,
+                            ArticleId = 8,
+                            ArticleQuantity = 77,
+                            InventoryId = 3
+                        },
+                        new
+                        {
+                            InventoryArticleId = 19,
+                            ArticleId = 9,
+                            ArticleQuantity = 10,
+                            InventoryId = 2
+                        },
+                        new
+                        {
+                            InventoryArticleId = 20,
+                            ArticleId = 10,
+                            ArticleQuantity = 0,
+                            InventoryId = 1
                         });
                 });
 

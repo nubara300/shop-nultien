@@ -12,23 +12,7 @@ namespace NultienShopREST
 
         public static void Main(string[] args)
         {
-            var settingsPath = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "appsettings.json");
-
-            Configuration = new ConfigurationBuilder()
-                .AddJsonFile(settingsPath, optional: false, true)
-                .AddEnvironmentVariables()
-                .Build();
-
-            _ = bool.TryParse(Configuration.GetSection("useDatabase").Value, out bool useDatabase);
-
-            var host = CreateHostBuilder(args).Build();
-
-            if (useDatabase != true)
-            {
-                //initialze data
-            }
-
-            host.Run();
+            CreateHostBuilder(args).Build().Run();
         }
 
         public static IHostBuilder CreateHostBuilder(string[] args) =>
