@@ -17,11 +17,11 @@ Solution was switched to REST API technology, so it can easily be connected to s
 ## Dependencies
 
 - [Mapster](https://github.com/MapsterMapper/Mapster) is used as auto mapper.
-- [MapsterDependecyInjection] is used as auto mapper.
+- [MapsterDependecyInjection](https://www.nuget.org/packages/Mapster.DependencyInjection/1.0.0) is used for auto mapper.
 - [Microsoft.EntityFrameworkCore](https://www.nuget.org/packages/Microsoft.EntityFrameworkCore/5.0.12) is used for database operations.
 - [xUnit](https://www.nuget.org/packages/xunit/2.4.1) is used for unit testing.
 - [Moq](https://www.nuget.org/packages/Moq/4.16.1) is used for unit testing.
-- [Swashbuckle.AspNetCore] https://www.nuget.org/packages/Swashbuckle.AspNetCore/5.6.3
+- [Swashbuckle.AspNetCore] (https://www.nuget.org/packages/Swashbuckle.AspNetCore/5.6.3) is used for Swagger.
 
 ## Start
 
