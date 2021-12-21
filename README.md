@@ -37,7 +37,7 @@ Solution was switched to REST API technology, so it can easily be connected to s
 
 
 ### SQL Server
-- In the case of using databse an instance of sql server is required for the project to work. 
+- In the case of using database, an instance of sql server is required for the project to work. 
 - After setting up connection string on project startup small database will be created.
 
 ## Tests
