@@ -1,33 +1,43 @@
 ﻿using Moq;
 using NultienShop.DataAccess;
 using NultienShop.DataAccess.Domain;
-using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
-using NultienShop.DataAccess.Domain.ModelConfiguration;
 using NultienShop.DataAccess.Domain.Models;
 using Xunit;
+using Microsoft.Extensions.Configuration;
 
 namespace NultienShopTEST.Repositories
 {
     public class InventoryRepositoryTests
     {
+        private MockRepository mockRepository;
         private readonly DbContextOptions<TheShopContext> _dbContextOptions;
         public TheShopContext _dbContextMock;
+        private Mock<IConfiguration> mockConfiguration;
 
         public InventoryRepositoryTests()
         {
+            this.mockRepository = new MockRepository(MockBehavior.Default);
+
+            this.mockConfiguration = this.mockRepository.Create<IConfiguration>();
+
+            Mock<IConfigurationSection> mockSection = this.mockRepository.Create<IConfigurationSection>();
+            mockSection.Setup(x => x.Value).Returns("false");
+
+            mockConfiguration.Setup(x => x.GetSection(It.Is<string>(k => k == "useInMemoryDatabase"))).Returns(mockSection.Object);
+
             this._dbContextOptions = new DbContextOptionsBuilder<TheShopContext>()
                 .UseInMemoryDatabase(databaseName: "NultienTestDB")
                 .Options;
-            
+
             _dbContextMock = new TheShopContext(_dbContextOptions);
         }
 
         private InventoryRepository CreateInventoryRepository()
         {
-            return new InventoryRepository(_dbContextMock);
+            return new InventoryRepository(_dbContextMock, mockConfiguration.Object);
         }
 
         [Fact]
