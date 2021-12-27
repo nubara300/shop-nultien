@@ -31,16 +31,19 @@ namespace NultienShop.DataAccess
                 if (useInMemoryDatabase)
                 {
                     return await _context.InventoryArticle
-                        .Where(x=>x.ArticleId==articleId)
+                        .Where(x => x.ArticleId == articleId)
                         .ToListAsync();
                 }
+                var articleIdParam = new SqlParameter("@ArticleId", articleId);
+                var articleQuantityParam = new SqlParameter("@ArticleQuantity", quantity);
+
                 return await _context.InventoryArticle
-                    .FromSqlRaw($"EXEC SelectArticleQuantity {0}, {1}", articleId, quantity)
+                    .FromSqlRaw($"EXEC SelectArticleQuantity @ArticleId,@ArticleQuantity ", articleIdParam, articleQuantityParam)
                     .ToListAsync();
             }
 
             return new List<InventoryArticle> { firstGreaterInventory };
         }
-        
+
     }
 }

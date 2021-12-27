@@ -12,15 +12,16 @@ GO
     --Add the parameters for the stored procedure here
 AS
     BEGIN
-SELECT *
+SELECT
+  *
 FROM (
-    SELECT *,
-    SUM(ArticleQuantity) OVER (ORDER BY ArticleQuantity ASC) as total_qty,
-    SUM(ArticleQuantity) OVER(ORDER BY ArticleQuantity ASC
-rows between unbounded preceding and 1 preceding) as prev_total_qty
-    FROM InventoryArticle 
-WHERE ArticleId = @ArticleId
-    ) AS o 
-WHERE 
-coalesce(prev_total_qty, 0) < @ArticleQuantity
+    SELECT
+      i.*,
+      RunningSum = SUM(convert(bigint,i.ArticleQuantity)) 
+      OVER (PARTITION BY i.ArticleId ORDER BY i.InventoryArticleId ROWS UNBOUNDED PRECEDING)
+    FROM InventoryArticle i
+    INNER JOIN Article a ON i.ArticleId = a.ArticleId
+    WHERE i.ArticleId = @ArticleId and i.ArticleQuantity > 0
+) i
+WHERE i.RunningSum - i.ArticleQuantity < @ArticleQuantity;
 END
